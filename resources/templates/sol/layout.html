@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>sol</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,target-densitydpi=160" name="viewport">
+    <meta name="description" content="SOL">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inder:300,400,700">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oxygen Mono">
+    <link rel="stylesheet" type="text/css" href="/css/sol.css">
+    <link rel="shortcut icon" href="/img/sol-logo.png">
+  </head>
+  <body>
+    <div id="sol-site">
+      <div id="sol-logo">
+        <a href="{{route-for :sol-home {} }}">
+          <img src="/img/sol-logo.png" width="40%" alt="SOL">
+        </a>
+      </div>
+
+      <div id="sol-nav">
+        <ul class="nav">
+          <li id="sol-nav-story" class="{{#sol-story}}active{{/sol-story}}">
+            <a href="{{route-for :sol-story {} }}">story</a>
+          </li>
+          <li id="sol-nav-game" class="{{#sol-game}}active{{/sol-game}}">
+            <a href="{{route-for :sol-game {} }}">game</a>
+          </li>
+          <li id="sol-nav-images" class="{{#sol-images}}active{{/sol-images}}">
+            <a href="{{route-for :sol-images {} }}">images</a>
+          </li>
+          <li id="sol-nav-about" class="{{#sol-about}}active{{/sol-about}}">
+            <a href="{{route-for :sol-about {} }}">about</a>
+          </li>
+          <li id="sol-nav-contact" class="{{#sol-contact}}active{{/sol-contact}}">
+            <a href="{{route-for :sol-contact {} }}">contact</a>
+          </li>
+        </ul>
+      </div>
+
+      {{%content}}
+      {{/content}}
+
+    </div>
+    <div id="sol-footer" width="100%">
+      <a href="/{{route-for :home {} }}">
+        <span class="elephant white">ELEPHANT</span>
+        <img src="/img/elephant-laboratories-logo.png" width="10%" alt="SOL">
+        <span class="elephant elephant-green">laboratories</span>
+      </a>
+    </div>
+  </body>
+</html>

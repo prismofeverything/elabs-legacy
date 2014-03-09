@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>elephant LABORATORIES</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,target-densitydpi=160" name="viewport">
+    <meta name="description" content="SOL">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oxygen Mono">
+    <link rel="stylesheet" type="text/css" href="/css/elephantlaboratories.css">
+    <link rel="shortcut icon" href="/img/elephant-laboratories-logo.png">
+  </head>
+  <body>
+    <div id="elephantlaboratories-site">
+      <div id="elephantlaboratories-logo">
+        <h1>
+          <span class="white">ELEPHANT</span><span class="green">laboratories</span>
+        </h1>
+        <a href="/{{route-for :home {} }}">
+          <img src="/img/elephant-laboratories-logo.png" width="70%" alt="elephant LABORATORIES" id="triclops">
+        </a>
+      </div>
+
+      <div id="elephantlaboratories-nav">
+        <ul class="nav">
+          <!-- <li id="elephantlaboratories-nav-sol"> -->
+          <!--   <a href="{{route-for :sol-story {} }}"><img src="img/sol-logo.png" id="sol-icon" width="80px" /></a> -->
+          <!-- </li> -->
+          <li id="elephantlaboratories-nav-games">
+            <a href="{{route-for :games {} }}" class="green{{#games}} active-black{{/games}}">GAMES</a>
+          </li>
+          <li id="elephantlaboratories-nav-about">
+            <a href="{{route-for :about {} }}" class="black{{#about}} active-green{{/about}}">ABOUT</a>
+          </li>
+        </ul>
+      </div>
+
+      <div id="elephantlaboratories-content">
+      {{%content}}
+      {{/content}}
+      </div>
+
+    </div>
+  </body>
+</html>
