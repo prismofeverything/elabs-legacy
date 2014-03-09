@@ -21,7 +21,7 @@
       (do
         (println (str person))
         (j/insert! db :person person)
-        ((page/page "sol-thanks") person)))))
+        ((page/page "sol-thanks") (merge request person))))))
 
 (def sol-routes
   ["/sol" :sol-home (page/page "sol-story") 

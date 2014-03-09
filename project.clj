@@ -1,4 +1,4 @@
-(defproject elephantlaboratories "0.0.1"
+(defproject elephantlaboratories "0.0.3"
   :description "Website for Elephant Laboratories and Sol"
   :url "http://elephantlaboratories.com"
   :license {:name "Eclipse Public License"
@@ -8,6 +8,6 @@
                  [postgresql/postgresql "8.4-702.jdbc4"]
                  [http-kit "2.1.12"]
                  [polaris "0.0.4"]
-                 [ring "1.2.0"]
+                 [ring "1.2.1"]
                  [caribou/antlers "0.6.1"]]
   :main elephantlaboratories.server)
