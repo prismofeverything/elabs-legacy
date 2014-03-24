@@ -1,4 +1,4 @@
-(defproject elephantlaboratories "0.0.3"
+(defproject elephantlaboratories "0.0.4"
   :description "Website for Elephant Laboratories and Sol"
   :url "http://elephantlaboratories.com"
   :license {:name "Eclipse Public License"
