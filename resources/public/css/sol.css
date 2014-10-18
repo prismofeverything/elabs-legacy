@@ -82,14 +82,17 @@ form {
 
 .green {
   color: #2ab573;
+  /* color: #D7C32D; */
 }
 
 .blue {
   color: #00adef;
+  /* color: #D5742E; */
 }
 
 .purple {
   color: #934a9c;
+  /* color: #892E20; */
 }
 
 h1, h2, h3 {
@@ -153,7 +156,11 @@ a {
   float: left;
   width: 100%;
   position: relative;
-  background-color: #2ab573;
+  /* background-color: #D5742E; */
+  /* background-color: #D7C32D; */
+  /* background-color: #2ab573; */
+  background-color: #934a9c;
+  background-color: #892E20;
   letter-spacing: 2px;
   margin-bottom: 80px;
 }
@@ -183,7 +190,9 @@ a {
 
 .active {
   /* background-color: #000000; */
-  background-color: #934a9c;
+  /* background-color: #934a9c; */
+  background-color: #D7C32D;
+  /* background-color: #892E20; */
 }
 
 #sol-story {
