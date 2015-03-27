@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+<channel>
+<atom:link href='http://elephantlaboratories.com/' rel='self' type='application/rss+xml'/>
+<generator>
+clj-rss
+</generator>
+<title>
+ELEPHANTlaboratories
+</title>
+<link>
+http://elephantlaboratories.com/
+</link>
+<description>
+Life, paradox and game design
+</description>
+<lastBuildDate>
+Fri, 27 Mar 2015 15:37:30 -0700
+</lastBuildDate>
+<author>
+Ryan Spangler
+</author>
+<item>
+<guid>
+http://elephantlaboratories.com/blog/posts/2015-03-27-birth-call.html
+</guid>
+<link>
+http://elephantlaboratories.com/blog/posts/2015-03-27-birth-call.html
+</link>
+<title>
+We are life
+</title>
+<description>
+&lt;h3&gt;&lt;a name=&quot;the&amp;#95;first&amp;#95;braying&amp;#95;call&amp;#95;of&amp;#95;the&amp;#95;elephant&quot;&gt;&lt;/a&gt;The first braying call of the Elephant&lt;/h3&gt;&lt;p&gt;Every animal at some point makes its first noise, its first announcement of existence.  I personally have made many since, but I don't remember my first.  Was it triumph?  Pain?  Bewilderment?  Joy?  Or maybe just the involuntary expression of a creature with newly found vocal cords.&lt;br /&gt;&lt;/p&gt;&lt;p&gt;In any case, this is the first call of Elephant Laboratories.  It may be considered similarly without specific content or meaning, but more a fundamental expression of existence.  Many years from now, like my own first emission, I will probably have no memory of this.  But for now, this is all I have.  This is my sentiment.  We exist.&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 27 Mar 2015 00:00:00 -0700
+</pubDate>
+<author>
+Ryan Spangler
+</author>
+</item>
+</channel>
+</rss>
