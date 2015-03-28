@@ -5,7 +5,7 @@
  :post-root        "posts"
  :tag-root         "tags"
  :page-root        "pages"
- :blog-prefix      "/blog"
+ :blog-prefix      "/chronicle"
  :rss-name         "feed.xml"
  :rss-filters      ["cryogen"]
  :recent-posts     3
@@ -14,6 +14,6 @@
  :sass-dest        nil
  :resources        ["css" "js" "404.html"]
  :keep-files       [".git"]
- :disqus?          false
- :disqus-shortname ""
+ :disqus?          true
+ :disqus-shortname "elephantlaboratories"
  :ignored-files    [#"\.#.*" #".*\.swp$"]}

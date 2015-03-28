@@ -28,16 +28,16 @@
        (fn [key params]
          (polaris/reverse-route routes key params))))))
 
-(defn blog
+(defn chronicle
   [request]
-  (redirect "/blog/index.html"))
+  (redirect "/chronicle/index.html"))
 
 (def routes
   (polaris/build-routes
    [["/" :home (page/page "home")]
     ["/games" :games (page/page "games")]
     ["/about" :about (page/page "about")]
-    ["/blog" :blog blog]
+    ["/chronicle" :chronicle chronicle]
     sol/sol-routes]))
 
 (def app
