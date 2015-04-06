@@ -112,8 +112,11 @@ a:hover {
 }
 
 #content p {
-    /* font-family: Helvetica, Arial, sans-serif; */
-    color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #ddd;
+    font-size: 18px;
+    /* font-family: 'PT Serif', Helvetica, Arial, sans-serif; */
+    /* color: #fff; */
 }
 
 #content p a {
