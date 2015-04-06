@@ -1,0 +1,34 @@
+* MetaMagicReality
+* Theme in games
+** holographic experience emerging from bits
+** theme emerging through dynamics in the mechanic vs flavor text and art
+* Strategy vs Experience
+** The difference between playing a game to maximize the mechanic and playing to have an experience with others
+* The role of hidden information
+** games with no hidden information seem like abstracts
+* Graph analysis of games
+** graphs where nodes are components and edges are transformations
+** graphs where nodes are states and edges are actions
+* Simplicity of rules and depth of gameplay
+* The process of iteration in game design
+** starting with the simplest thing that works and iterating
+** finding the game it wants to be, not necessarily the one you want it to be
+** cycles of expanding and pruning
+** solving problems by removing rules rather than adding them
+* Additive vs Subtractive design
+* Reviews
+** Two Player Games
+*** Epigo
+*** Akrotiri
+*** Zhang Guo
+** Unappreciated Games
+*** Hegemonic
+*** Bios Megafauna
+*** Aztlan
+*** Walled City
+*** Madeira
+*** Quoridor
+*** Myrmes
+*** Sun Tzu
+*** Mystery of the Templars
+*** The Captain is Dead
