@@ -61,13 +61,6 @@
 
         <div class="col-md-3">
           <div id="sidebar">
-            <h3>Links</h3>
-            <ul id="links">
-              <li><a href="http://metamagicreality.com">MetaMagicReality</a></li>
-              {% for page in sidebar-pages %}
-              <li><a href="{{page.uri}}">{{page.title}}</a></li>
-              {% endfor %}
-            </ul>
             {% if latest-posts|not-empty %}
             <div id="recent">
               <h3>Recent Posts</h3>
@@ -78,6 +71,13 @@
               </ul>
             </div>
             {% endif %}
+            <h3>Links</h3>
+            <ul id="links">
+              <li><a href="http://metamagicreality.com">MetaMagicReality</a></li>
+              {% for page in sidebar-pages %}
+              <li><a href="{{page.uri}}">{{page.title}}</a></li>
+              {% endfor %}
+            </ul>
             {% if tags|not-empty %}
             <div id="tags">
               <h3>Tags</h3>

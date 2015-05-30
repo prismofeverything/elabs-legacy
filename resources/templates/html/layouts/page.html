@@ -2,22 +2,34 @@
 {%block subtitle %}: {{page.title}}{% endblock %}
 {% block content %}
 <div id="custom-page">
-    <div id="page-header">
-        <h2>{{page.title}}</h2>
-    </div>
-    {% if page.toc %}{{page.toc|safe}}{% endif %}
-    {{page.content|safe}}
+  <div id="page-header">
+    <h2>{{page.title}}</h2>
+  </div>
+  {% if page.toc %}{{page.toc|safe}}{% endif %}
+  {{page.content|safe}}
 
-    <div id="prev-next">
-        {% if page.prev %}
-        <a href="{{page.prev.uri}}">&laquo; {{page.prev.title}}</a>
-        {% endif %}
-        {% if all page.prev page.next %}
-        ||
-        {% endif %}
-        {% if page.next %}
-        <a href="{{page.next.uri}}">{{page.next.title}} &raquo;</a>
-        {% endif %}
-    </div>
+  <div id="prev-next">
+    {% if page.prev %}
+    <a href="{{page.prev.uri}}">&laquo; {{page.prev.title}}</a>
+    {% endif %}
+    {% if all page.prev page.next %}
+    ||
+    {% endif %}
+    {% if page.next %}
+    <a href="{{page.next.uri}}">{{page.next.title}} &raquo;</a>
+    {% endif %}
+  </div>
+
+  {% if disqus-shortname %}
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//{{disqus-shortname}}.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  {% endif %}
+
 </div>
 {% endblock %}

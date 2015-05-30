@@ -1,4 +1,6 @@
 * MetaMagicReality
+* Ideas
+** The thing reflects the energy used to create it
 * Theme in games
 ** holographic experience emerging from bits
 ** theme emerging through dynamics in the mechanic vs flavor text and art
