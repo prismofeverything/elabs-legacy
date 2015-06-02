@@ -14,7 +14,7 @@
 [greenland]: http://boardgamegeek.com/boardgame/156501/greenland
 [highfrontier]: http://boardgamegeek.com/boardgame/47055/high-frontier
 
-One of my favorite exercises is to imagine a game if all theme has been stripped away.  Replace everything with white and black abstract symbols and simple geometric shapes.  Would it still evoke the theme?  In this case the only place the theme could come from is the dynamics inherent in the mechanic.  This is my test for how essential the theme of a game is to its mechanic (dubbed the "Blank Art" test).
+One of my favorite exercises is to imagine a [game](/pages/definition-of-game.html) if all theme has been stripped away.  Replace everything with white and black abstract symbols and simple geometric shapes.  Would it still evoke the theme?  In this case the only place the theme could come from is the dynamics inherent in the mechanic.  This is my test for how essential the theme of a game is to its mechanic (dubbed the "Blank Art" test).
 
 ### Stripping the Theme
 

@@ -2,7 +2,7 @@
  :layout :page
  :tags ["game design" "theme" "experience" "mechanic" "theory"]}
 
-My favorite part of learning a game is that special moment when all of the independent rules and bits suddenly snap into focus and unify into a gestalt _experience_.  Suddenly there is something that is hovering above the game, something with depth and richness and a life of its own that, while dependent on the bits, is also beyond them.
+My favorite part of learning a [game](/pages/definition-of-game.html) is that special moment when all of the independent rules and bits suddenly snap into focus and unify into a gestalt _experience_.  Suddenly there is something that is hovering above the game, something with depth and richness and a life of its own that, while dependent on the bits, is also beyond them.
 
 This phenomenon is what I call the "Holographic Experience" of the game.  It is like the 2d bits are projecting a 3d experience of the game into my mind.  How does this happen?
 

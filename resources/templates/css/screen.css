@@ -161,6 +161,10 @@ footer {
     color: rgba(0,0,0,0.4)
 }
 
+#post img {
+    width: 100%;
+}
+
 #page-header {
     border-bottom: 1px solid #dbdbdb;
     margin-bottom: 20px;
