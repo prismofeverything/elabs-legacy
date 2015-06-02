@@ -1,5 +1,6 @@
 {:title "Game as Holographic Experience"
  :layout :page
+ :page-index 2
  :tags ["game design" "theme" "experience" "mechanic" "theory"]}
 
 My favorite part of learning a [game](/pages/definition-of-game.html) is that special moment when all of the independent rules and bits suddenly snap into focus and unify into a gestalt _experience_.  Suddenly there is something that is hovering above the game, something with depth and richness and a life of its own that, while dependent on the bits, is also beyond them.

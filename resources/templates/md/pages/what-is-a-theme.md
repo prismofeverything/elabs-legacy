@@ -1,5 +1,6 @@
 {:title "What is a Theme?"
  :layout :page
+ :page-index 5
  :tags ["game design" "theme" "experience" "mechanic"]}
 
 [go]: go.html

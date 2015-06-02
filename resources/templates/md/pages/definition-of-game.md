@@ -1,5 +1,6 @@
 {:title "Definition of Game"
  :layout :page
+ :page-index 1
  :tags ["game design" "theme" "abstract" "experience" "mechanic"]}
 
 [prismofeverything]: http://boardgamegeek.com/collection/user/prismofeverything

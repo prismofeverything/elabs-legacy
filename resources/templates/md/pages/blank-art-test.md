@@ -1,5 +1,6 @@
 {:title "The Blank Art Test"
  :layout :page
+ :page-index 3
  :tags ["game design" "theme" "experience" "mechanic" "feld" "eklund"]}
 
 [order]: http://en.wikipedia.org/wiki/Order_(biology)

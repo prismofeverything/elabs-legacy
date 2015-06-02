@@ -1,5 +1,6 @@
 {:title "Go"
  :layout :page
+ :page-index 4
  :tags ["go" "theme" "life" "death"]}
 
 [go]: http://boardgamegeek.com/boardgame/188/go
