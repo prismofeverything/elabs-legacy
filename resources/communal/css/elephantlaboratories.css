@@ -191,6 +191,10 @@ a {
   margin: 100px 100px;
 }
 
+#elephantlaboratories-outer a {
+  font-size: 12px;
+}
+
 #sol-link {
   background-color: #000000;
 }
