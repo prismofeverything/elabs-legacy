@@ -174,12 +174,11 @@ a {
 
 .submit {
   margin: 20px 2px;
-  padding-left: 40px;
-  padding-right: 40px;
   width: 40%;
   color: #222222;
   border-radius: 10px;
   background-color: #cccccc;
+  text-align: center;
 }
 
 .expanding {
