@@ -17,7 +17,8 @@
             [cryogen-core.plugins :as cryo-plugins]
             [cryogen-core.compiler :as cryo-compiler]
             [elephantlaboratories.page :as page]
-            [elephantlaboratories.sol :as sol]))
+            [elephantlaboratories.sol :as sol]
+            [elephantlaboratories.think :as think]))
 
 (defn wrap-route-for
   [handler routes]
@@ -38,7 +39,8 @@
     ["/games" :games (page/page "games")]
     ["/about" :about (page/page "about")]
     ["/chronicle" :chronicle chronicle]
-    sol/sol-routes]))
+    sol/sol-routes
+    think/think-routes]))
 
 (def app
   (-> (polaris/router routes)

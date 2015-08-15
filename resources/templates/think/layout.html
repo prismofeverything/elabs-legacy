@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>think</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,target-densitydpi=160" name="viewport">
+    <meta name="description" content="THINK">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inder:300,400,700">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oxygen Mono">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Poiret One">
+    <link rel="stylesheet" type="text/css" href="/css/think.css">
+    <link rel="shortcut icon" href="/img/sol/sol-logo-square.png">
+  </head>
+  <body>
+    <div id="think-site">
+      <div id="think-header">
+        <a href="{{route-for :think-home {} }}">
+          <h2>think</h2>
+        </a>
+      </div>
+      <br/>
+
+      {{%content}}
+      {{/content}}
+
+    </div>
+    <div id="think-footer" class="{{#expanding?}}expanding{{/expanding?}}">
+      <a href="{{route-for :think-expand {} }}">{{#expanding?}}expanding{{/expanding?}}{{^expanding?}}expand{{/expanding?}}</a>
+    </div>
+  </body>
+</html>
