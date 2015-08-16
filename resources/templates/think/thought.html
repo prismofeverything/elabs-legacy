@@ -2,7 +2,16 @@
 {{%content}}
       <div id="think-home">
         <p>
-          <h3 class="purple">{{{thought.words}}}</h3>
+          <a href="/think/{{thought.id}}">
+            <h3 class="purple">{{{thought.words}}}</h3>
+          </a>
         </p>
       </div>
+      {{#id}}
+      <div id="think-enhance">
+        <a href="/think/expand/{{id}}" class="submit">
+          enhance
+        </a>
+      </div>
+      {{/id}}
 {{/content}}

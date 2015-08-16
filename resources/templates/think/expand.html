@@ -5,7 +5,10 @@
           <h2 class="grey">Something to think about?</h2>
         </div>
         <form id="think-signup-form" action="{{route-for :think-mark {} }}" method="post" enctype="multipart/form-data">
-          <div><textarea name="words" id="think-words" class="text-area"></textarea></div>
+          {{#thought}}<input type="hidden" name="thought" value="{{thought.id}}" />{{/thought}}
+          <div>
+            <textarea name="words" id="think-words" class="text-area">{{#thought}}{{thought.words}}{{/thought}}</textarea>
+          </div>
           <input type="submit" value="expand" class="submit" />
         </form>
       </div>

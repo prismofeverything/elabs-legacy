@@ -1,0 +1,14 @@
+{{< templates/think/layout.html}}
+{{%content}}
+      <div id="think-home">
+        <p>
+          <ul>
+            {{#thoughts}}
+            <a href="/think/{{id}}">
+              <h3>{{{words}}}</h3>
+            </a>
+            {{/thoughts}}
+          </ul>
+        </p>
+      </div>
+{{/content}}
