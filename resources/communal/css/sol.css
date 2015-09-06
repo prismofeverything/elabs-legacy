@@ -47,23 +47,26 @@ html {
 }
 
 body {
-  background: #000000;
+  background: #392d33;
   -webkit-font-smoothing: subpixel-antialiased;
   font-family: 'Inder';
   /* letter-spacing: 1px; */
   line-height: 1.8em;
   font-size: 16px;
   text-align: center;
-  color: #2ab573;
+  /* color: #2ab573; */
+  color: #fed256;
   margin: 0;
 }
 
 input, textarea {
   font-family: 'Inder';
   font-size: 18px;
-  background-color: #00adef;
+  color: #feebaf;
+  background-color: #c05c3e;
+  /* color: #ffffff; */
+  /* background-color: #00adef; */
   border: 0px solid;
-  color: #ffffff;
   padding: 5px;
 }
 
@@ -77,22 +80,26 @@ form {
 }
 
 .white {
-  color: #ffffff;
+  color: #feebaf;
+  /* color: #fff3d3; */
 }
 
 .green {
-  color: #2ab573;
   /* color: #D7C32D; */
+  /* color: #2ab573; */
+  color: #a63f39;
 }
 
 .blue {
-  color: #00adef;
+  /* color: #00adef; */
   /* color: #D5742E; */
+  color: #fed256;
 }
 
 .purple {
-  color: #934a9c;
+  /* color: #934a9c; */
   /* color: #892E20; */
+  color: #c05c3e;
 }
 
 h1, h2, h3 {
@@ -126,7 +133,7 @@ p {
 
 a {
   text-decoration: none;
-  color: #ffffff;
+  color: #feebaf;
 }
 
 *, *:before, *:after {
@@ -159,8 +166,9 @@ a {
   /* background-color: #D5742E; */
   /* background-color: #D7C32D; */
   /* background-color: #2ab573; */
-  background-color: #934a9c;
-  background-color: #892E20;
+  /* background-color: #934a9c; */
+  /* background-color: #892E20; */
+  background-color: #a63f39;
   letter-spacing: 2px;
   margin-bottom: 80px;
 }
@@ -191,8 +199,13 @@ a {
 .active {
   /* background-color: #000000; */
   /* background-color: #934a9c; */
-  background-color: #D7C32D;
   /* background-color: #892E20; */
+  /* background-color: #D7C32D; */
+  background-color: #fed256;
+}
+
+.active a {
+  color: #392d33;
 }
 
 #sol-story {
@@ -225,8 +238,10 @@ a {
   margin: 20px 2px;
   padding-left: 40px;
   padding-right: 40px;
-  color: #ffffff;
-  background-color: #934a9c;
+  /* color: #ffffff; */
+  /* background-color: #934a9c; */
+  color: #feebaf;
+  background-color: #a63f39;
 }
 
 #sol-footer {
