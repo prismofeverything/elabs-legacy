@@ -47,7 +47,9 @@ html {
 }
 
 body {
-  background: #392d33;
+  /* background: #392d33; */
+    /* #2f2e36; */
+  background: #2d2c32;
   -webkit-font-smoothing: subpixel-antialiased;
   font-family: 'Inder';
   /* letter-spacing: 1px; */
@@ -205,7 +207,8 @@ a {
 }
 
 .active a {
-  color: #392d33;
+  color: #2d2c32;
+  /* #392d33; */
 }
 
 #sol-story {
