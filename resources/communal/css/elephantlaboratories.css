@@ -47,7 +47,8 @@ html {
 }
 
 body {
-  background: #727a7e;
+  /* background: #727a7e; */
+  background: #5f5599;
   -webkit-font-smoothing: subpixel-antialiased;
   font-family: 'Oxygen Mono';
   /* letter-spacing: 1px; */

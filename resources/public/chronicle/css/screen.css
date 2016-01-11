@@ -4,7 +4,9 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
     color: #a5d7bc;
-    background-color: #727a7e;
+    /* background-color: #727a7e; */
+    background: #5f5599;
+    background: #4f4589;
     font-family: 'Oxygen Mono';
     /* font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; */
     font-size: 16px;
@@ -57,7 +59,9 @@ a:hover {
 }
 
 .navbar-default {
-    background-color: #626a6e;
+    /* background-color: #626a6e; */
+    background: #4f4589;
+    background: #5f5599;
     border: none;
 }
 
@@ -107,6 +111,7 @@ a:hover {
 
 #content {
     background-color: #555;
+    background: #3f3579;
     border-radius: 3px;
     box-shadow: 0 0 0 0,0 6px 12px rgba(34,34,34,0.1);
 }

@@ -18,6 +18,7 @@
             [cryogen-core.compiler :as cryo-compiler]
             [elephantlaboratories.page :as page]
             [elephantlaboratories.sol :as sol]
+            [elephantlaboratories.lastdays :as lastdays]
             [elephantlaboratories.think :as think]))
 
 (defn wrap-route-for
@@ -40,6 +41,7 @@
     ["/about" :about (page/page "about")]
     ["/chronicle" :chronicle chronicle]
     sol/sol-routes
+    lastdays/lastdays-routes
     think/think-routes]))
 
 (def app

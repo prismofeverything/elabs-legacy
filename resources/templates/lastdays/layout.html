@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>lastdays</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,target-densitydpi=160" name="viewport">
+    <meta name="description" content="LASTDAYS">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inder:300,400,700">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oxygen Mono">
+    <link rel="stylesheet" type="text/css" href="/css/lastdays.css">
+    <!-- <link rel="shortcut icon" href="/img/lastdays/lastdays-logo-square.png"> -->
+  </head>
+  <body>
+    <div id="lastdays-site">
+      <div id="lastdays-logo">
+        <a href="{{route-for :lastdays-home {} }}">
+          <img src="/img/lastdays/logo.jpg" alt="LASTDAYS">
+        </a>
+      </div>
+      <br/>
+
+      <div id="lastdays-nav">
+        <ul class="nav">
+          <li id="lastdays-nav-home" class="{{#lastdays-home}}active{{/lastdays-home}}">
+            <a href="{{route-for :lastdays-home {} }}">kickstarter</a>
+          </li>
+          <li id="lastdays-nav-story" class="{{#lastdays-story}}active{{/lastdays-story}}">
+            <a href="{{route-for :lastdays-story {} }}">the story</a>
+          </li>
+          <li id="lastdays-nav-game" class="{{#lastdays-game}}active{{/lastdays-game}}">
+            <a href="{{route-for :lastdays-game {} }}">the board game</a>
+          </li>
+          <li id="lastdays-nav-subscribe" class="{{#lastdays-subscribe}}active{{/lastdays-subscribe}}">
+            <a href="{{route-for :lastdays-subscribe {} }}">subscribe</a>
+          </li>
+        </ul>
+      </div>
+
+      {{%content}}
+      {{/content}}
+
+    </div>
+
+    <div id="lastdays-footer" width="100%">
+      <a href="/{{route-for :home {} }}">
+        <span class="elephant white">ELEPHANT</span>
+        <img src="/img/elephant-laboratories-logo.png" width="10%" alt="LASTDAYS">
+        <span class="elephant elephant-green">laboratories</span>
+      </a>
+    </div>
+  </body>
+</html>
