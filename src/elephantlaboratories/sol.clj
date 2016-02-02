@@ -31,3 +31,17 @@
     ["/about" :sol-about (page/page "sol-about")]
     ["/contact" :sol-contact (page/page "sol-contact")]
     ["/signup" :sol-signup {:POST #'signup}]]])
+
+(defn minimum-level
+  [printing freight shipping pledge]
+  (let [base (+ printing freight)
+        outwards (map
+                  (fn [copies]
+                    (let [cost (+ base (* shipping copies))
+                          income (* pledge copies)]
+                      {:cost cost :income income :copies copies}))
+                  (range))]
+    (drop-while
+     (fn [{:keys [cost income]}]
+       (> cost (* 0.85 income)))
+     outwards)))
