@@ -8,6 +8,7 @@
 ** The difference between playing a game to maximize the mechanic and playing to have an experience with others
 * The role of hidden information
 ** games with no hidden information seem like abstracts
+* Playability
 * Graph analysis of games
 ** graphs where nodes are components and edges are transformations
 ** graphs where nodes are states and edges are actions
@@ -23,6 +24,10 @@
 *** Epigo
 *** Akrotiri
 *** Zhang Guo
+*** Khmer
+*** Chase
+*** Arboretum
+*** King is Dead
 ** Unappreciated Games
 *** Hegemonic
 *** Bios Megafauna
