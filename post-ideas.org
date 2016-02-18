@@ -16,6 +16,7 @@
 * The process of iteration in game design
 ** starting with the simplest thing that works and iterating
 ** finding the game it wants to be, not necessarily the one you want it to be
+*** "Iteration and Guiding a Design"
 ** cycles of expanding and pruning
 ** solving problems by removing rules rather than adding them
 * Additive vs Subtractive design
