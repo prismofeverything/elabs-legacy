@@ -1,6 +1,7 @@
 * MetaMagicReality
 * Ideas
 ** The thing reflects the energy used to create it
+** Thinking in new ways
 * Theme in games
 ** holographic experience emerging from bits
 ** theme emerging through dynamics in the mechanic vs flavor text and art
@@ -9,7 +10,9 @@
 * The role of hidden information
 ** games with no hidden information seem like abstracts
 * Playability
+** Board game dynamic as message
 * Graph analysis of games
+** The space of all possible games
 ** graphs where nodes are components and edges are transformations
 ** graphs where nodes are states and edges are actions
 * Simplicity of rules and depth of gameplay
@@ -40,3 +43,4 @@
 *** Sun Tzu
 *** Mystery of the Templars
 *** The Captain is Dead
+*** CO2
