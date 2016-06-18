@@ -23,11 +23,14 @@
 
       <div id="sol-nav">
         <ul class="nav">
+          <li id="sol-nav-game" class="{{#sol-game}}active{{/sol-game}}">
+            <a href="{{route-for :sol-game {} }}">game</a>
+          </li>
           <li id="sol-nav-story" class="{{#sol-story}}active{{/sol-story}}">
             <a href="{{route-for :sol-story {} }}">story</a>
           </li>
-          <li id="sol-nav-game" class="{{#sol-game}}active{{/sol-game}}">
-            <a href="{{route-for :sol-game {} }}">game</a>
+          <li id="sol-nav-worlds" class="{{#sol-worlds}}active{{/sol-worlds}}">
+            <a href="{{route-for :sol-worlds {} }}">worlds</a>
           </li>
           <li id="sol-nav-images" class="{{#sol-images}}active{{/sol-images}}">
             <a href="{{route-for :sol-images {} }}">images</a>

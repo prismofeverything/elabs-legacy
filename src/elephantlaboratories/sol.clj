@@ -27,6 +27,7 @@
   ["/sol" :sol-home (page/page "sol-story") 
    [["/story" :sol-story (page/page "sol-story")]
     ["/game" :sol-game (page/page "sol-game")]
+    ["/worlds" :sol-worlds (page/page "sol-worlds")]
     ["/images" :sol-images (page/page "sol-images")]
     ["/about" :sol-about (page/page "sol-about")]
     ["/contact" :sol-contact (page/page "sol-contact")]

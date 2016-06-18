@@ -104,6 +104,46 @@ form {
   color: #c05c3e;
 }
 
+.utopia {
+  color: #0066ff;
+}
+
+.omnitopia {
+  color: #00cc66;
+}
+
+.aquatopia {
+  color: #9933ff;
+}
+
+.transtopia {
+  color: #cccccc;
+}
+
+.nurtopia {
+  color: #555555;
+}
+
+.utopia-light {
+  color: #3399ff;
+}
+
+.omnitopia-light {
+  color: #33cc99;
+}
+
+.aquatopia-light {
+  color: #cc66ff;
+}
+
+.transtopia-light {
+  color: #dddddd;
+}
+
+.nurtopia-light {
+  color: #777777;
+}
+
 h1, h2, h3 {
   font-weight: bold;
   font-style: bold;
