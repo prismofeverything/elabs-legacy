@@ -15,5 +15,5 @@
        :headers {"Content-Type" "text/html"}
        :body (antlers/render-file 
               template
-              (merge request {:page slug (keyword slug) true}))})))
+              (merge request {:page slug :title slug (keyword slug) true}))})))
 

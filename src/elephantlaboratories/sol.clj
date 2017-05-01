@@ -11,7 +11,7 @@
    :user (System/getenv "SOL_USER")
    :password (System/getenv "SOL_PASSWORD")})
 
-(defn signup
+(defn confirm
   [request]
   (let [test (-> request :params :signup-test)
         person {:name (-> request :params :signup-name)
@@ -23,15 +23,17 @@
         (j/insert! db :person person)
         ((page/page "sol-thanks") (merge request person))))))
 
-(def sol-routes
-  ["/sol" :sol-home (page/page "sol-story") 
-   [["/story" :sol-story (page/page "sol-story")]
-    ["/game" :sol-game (page/page "sol-game")]
+(defn sol-routes
+  []
+  ["/sol" :sol-home (page/page "sol-home")
+   [["/story" :sol-play (page/page "sol-play")]
     ["/worlds" :sol-worlds (page/page "sol-worlds")]
-    ["/images" :sol-images (page/page "sol-images")]
-    ["/about" :sol-about (page/page "sol-about")]
-    ["/contact" :sol-contact (page/page "sol-contact")]
-    ["/signup" :sol-signup {:POST #'signup}]]])
+    ["/background" :sol-background (page/page "sol-background")]
+    ["/buy" :sol-buy (page/page "sol-buy")]
+    ["/thanks" :sol-thanks (page/page "sol-thanks")]
+    ["/confirm" :sol-confirm (page/page "sol-confirm")]]])
+
+;; {:POST #'confirm}
 
 (defn minimum-level
   [printing freight shipping pledge]
