@@ -60,9 +60,9 @@
 
 (defn sol-routes
   []
-  ["/sol-new" :sol-home (page/page "sol-home")
+  ["/sol-new" :sol-new-home (page/page "sol-home")
    [["/story" :sol-play (page/page "sol-play")]
-    ["/worlds" :sol-worlds (page/page "sol-worlds")]
+    ["/worlds" :sol-new-worlds (page/page "sol-worlds")]
     ["/background" :sol-background (page/page "sol-background")]
     ["/buy" :sol-buy (page/page "sol-buy")]
     ["/thanks" :sol-thanks (page/page "sol-thanks")]
