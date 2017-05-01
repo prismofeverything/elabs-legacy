@@ -23,6 +23,9 @@
         (j/insert! db :person person)
         ((page/page "sol-thanks") (merge request person))))))
 
+(defn charge
+  [request])
+
 (defn sol-routes
   []
   ["/sol" :sol-home (page/page "sol-home")
@@ -31,9 +34,8 @@
     ["/background" :sol-background (page/page "sol-background")]
     ["/buy" :sol-buy (page/page "sol-buy")]
     ["/thanks" :sol-thanks (page/page "sol-thanks")]
-    ["/confirm" :sol-confirm (page/page "sol-confirm")]]])
-
-;; {:POST #'confirm}
+    ["/confirm" :sol-confirm (page/page "sol-confirm")]
+    ["/charge" :sol-charge {:POST #'charge}]]])
 
 (defn minimum-level
   [printing freight shipping pledge]

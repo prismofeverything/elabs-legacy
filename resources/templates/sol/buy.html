@@ -8,11 +8,65 @@
 	</div>
 </header>
 
-<div class="container container--light">
+<script src="/assets/js/stripe.js"></script>
+
+<div class="container container--light" onload="loadStripe()">
 	<div class="constrainer">
 		<div class="measure">
 			<h2>Header</h2>	
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius delectus perferendis repellat at, quasi sapiente odit, ad minus. Tempora nesciunt reprehenderit architecto praesentium ad vel veniam natus sapiente rerum labore! Pariatur nobis dolorum molestias quo animi nemo officia, dolore enim aut necessitatibus delectus temporibus cum, culpa commodi nihil!</p>
+			<p>You rule! Everything about the world</p>
+
+      <form action="/sol/charge" method="POST">
+        <div class="group">
+          <label>
+            <span>Name</span>
+            <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+          </label>
+          <label>
+            <span>Phone</span>
+            <input class="field" placeholder="(123) 456-7890" type="tel" />
+          </label>
+        </div>
+        <div class="group">
+          <label>
+            <span>Card</span>
+            <div id="card-element" class="field"></div>
+          </label>
+        </div>
+        <button type="submit">Pay $25</button>
+        <div class="outcome">
+          <div class="error"></div>
+          <div class="success">
+            Success! Your Stripe token is <span class="token"></span>
+          </div>
+        </div>
+      </form>
+
+
+      <!-- <form action="/sol/charge" method="POST"> -->
+      <!--   <script -->
+      <!--     src="https://checkout.stripe.com/checkout.js" class="stripe-button" -->
+      <!--     data-key="pk_test_01lVNaphdSv8xosyLvSm5ckt" -->
+      <!--     data-amount="70" -->
+      <!--     data-name="Elephant Laboratories" -->
+      <!--     data-description="Widget" -->
+      <!--     data-image="https://stripe.com/img/documentation/checkout/marketplace.png" -->
+      <!--     data-locale="auto"> -->
+      <!--   </script> -->
+      <!-- </form> -->
+
+      <!-- <form action="/sol/charge" method="post" id="payment-form"> -->
+      <!--   <div class="form-row"> -->
+      <!--     <label for="card-element"> -->
+      <!--       Credit or debit card -->
+      <!--     </label> -->
+
+      <!--     <div id="card-element"></div> -->
+      <!--     <div id="card-errors"></div> -->
+      <!--   </div> -->
+
+      <!--   <button>Submit Payment</button> -->
+      <!-- </form> -->
 		</div>
 	</div>
 </div>
