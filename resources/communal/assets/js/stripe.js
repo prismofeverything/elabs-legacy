@@ -23,22 +23,25 @@ var loadStripe = function() {
 
   console.log("!!!!!!!!!!!!")
 
-  function setOutcome(result) {
-    var successElement = document.querySelector('.success');
-    var errorElement = document.querySelector('.error');
-    successElement.classList.remove('visible');
-    errorElement.classList.remove('visible');
+  function setOutcome(details) {
+    return function(result) {
+      var successElement = document.querySelector('.success');
+      var errorElement = document.querySelector('.error');
+      successElement.classList.remove('visible');
+      errorElement.classList.remove('visible');
 
-    if (result.token) {
-      // Use the token to create a charge or a customer
-      // https://stripe.com/docs/charges
-      successElement.querySelector('.token').textContent = result.token.id;
-      successElement.classList.add('visible');
-      console.log(result)
-      $.post("/sol/charge", {token: result.token})
-    } else if (result.error) {
-      errorElement.textContent = result.error.message;
-      errorElement.classList.add('visible');
+      if (result.token) {
+        // Use the token to create a charge or a customer
+        // https://stripe.com/docs/charges
+        successElement.querySelector('.token').textContent = result.token.id;
+        successElement.classList.add('visible');
+        console.log(result)
+        details.token = result.token
+        $.post("/sol-new/charge", details)
+      } else if (result.error) {
+        errorElement.textContent = result.error.message;
+        errorElement.classList.add('visible');
+      }
     }
   }
 
@@ -50,13 +53,22 @@ var loadStripe = function() {
     e.preventDefault();
     var form = document.querySelector('form');
     var extraDetails = {
-      name: form.querySelector('input[name=cardholder-name]').value,
+      name: form.querySelector('input[name=name]').value,
+      phone: form.querySelector('input[name=phone]').value,
+      address_line1: form.querySelector('input[name=street1]').value,
+      address_line2: form.querySelector('input[name=street2]').value,
+      address_city: form.querySelector('input[name=city]').value,
+      address_state: form.querySelector('input[name=state]').value,
+      address_zip: form.querySelector('input[name=zip]').value,
+      address_country: form.querySelector('input[name=country]').value,
     };
-    stripe.createToken(card, extraDetails).then(setOutcome);
+    console.log(extraDetails)
+    stripe.createToken(card, extraDetails).then(setOutcome(extraDetails));
   });
 }
 
 $(document).ready(loadStripe)
+
 // var loadStripe = function() {
 //   var stripe = Stripe('pk_test_01lVNaphdSv8xosyLvSm5ckt');
 //   var elements = stripe.elements();
