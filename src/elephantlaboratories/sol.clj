@@ -1,8 +1,13 @@
 (ns elephantlaboratories.sol
   (:require [clojure.string :as string] 
             [clojure.java.jdbc :as j]
+            [byte-streams :as bytes]
+            [manifold.deferred :as defer]
+            [aleph.http :as http]
             [antlers.core :as antlers]
             [polaris.core :as polaris]
+            [taoensso.timbre :as log]
+            [ring.util.codec :as codec]
             [elephantlaboratories.page :as page]))
 
 (def db
@@ -10,6 +15,14 @@
    :subname "//127.0.0.1:5432/sol"
    :user (System/getenv "SOL_USER")
    :password (System/getenv "SOL_PASSWORD")})
+
+(def stripe
+  {:test
+   {:secret (System/getenv "STRIPE_TEST_SECRET")
+    :public (System/getenv "STRIPE_TEST_PUBLIC")}
+   :live
+   {:secret (System/getenv "STRIPE_LIVE_SECRET")
+    :public (System/getenv "STRIPE_LIVE_PUBLIC")}})
 
 (defn confirm
   [request]
@@ -24,11 +37,30 @@
         ((page/page "sol-thanks") (merge request person))))))
 
 (defn charge
-  [request])
+  [request]
+  (let [body (bytes/to-string (:body request))
+        params (codec/form-decode body "UTF-8")
+        token (get params "token[id]")
+        response @(defer/chain
+                    (http/post
+                     "https://api.stripe.com/v1/charges"
+                     {:basic-auth [(get-in stripe [:test :secret]) ""]
+                      :form-params
+                      {:amount 70
+                       :currency "usd"
+                       :description "test!"
+                       :source token}})
+                    :body
+                    bytes/to-string)]
+    (log/info (keys request))
+    (log/info body)
+    (log/info params)
+    (log/info (get params "token[id]"))
+    (log/info response)))
 
 (defn sol-routes
   []
-  ["/sol" :sol-home (page/page "sol-home")
+  ["/sol-new" :sol-home (page/page "sol-home")
    [["/story" :sol-play (page/page "sol-play")]
     ["/worlds" :sol-worlds (page/page "sol-worlds")]
     ["/background" :sol-background (page/page "sol-background")]

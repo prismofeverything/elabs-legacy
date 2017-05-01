@@ -24,13 +24,13 @@
         ((page/page "sol-thanks") (merge request person))))))
 
 (def sol-routes
-  ["/sol" :sol-home (page/page "sol-story") 
-   [["/story" :sol-story (page/page "sol-story")]
-    ["/game" :sol-game (page/page "sol-game")]
-    ["/worlds" :sol-worlds (page/page "sol-worlds")]
-    ["/images" :sol-images (page/page "sol-images")]
-    ["/about" :sol-about (page/page "sol-about")]
-    ["/contact" :sol-contact (page/page "sol-contact")]
+  ["/sol" :sol-home (page/page "solprevious-story") 
+   [["/story" :sol-story (page/page "solprevious-story")]
+    ["/game" :sol-game (page/page "solprevious-game")]
+    ["/worlds" :sol-worlds (page/page "solprevious-worlds")]
+    ["/images" :sol-images (page/page "solprevious-images")]
+    ["/about" :sol-about (page/page "solprevious-about")]
+    ["/contact" :sol-contact (page/page "solprevious-contact")]
     ["/signup" :sol-signup {:POST #'signup}]]])
 
 (defn minimum-level

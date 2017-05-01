@@ -1,2 +1,1 @@
-(ns elephantlaboratories.stripe
-  )
+(ns elephantlaboratories.stripe)

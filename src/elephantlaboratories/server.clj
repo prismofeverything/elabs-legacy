@@ -24,6 +24,7 @@
    ;; [cryogen-core.compiler :as cryo-compiler]
    [elephantlaboratories.page :as page]
    [elephantlaboratories.sol :as sol]
+   [elephantlaboratories.sol-previous :as sol-previous]
    ;; [elephantlaboratories.lastdays :as lastdays]
    [elephantlaboratories.think :as think]))
 
@@ -37,7 +38,7 @@
          (polaris/reverse-route routes key params))))))
 
 ;; (defn chronicle
-;;   [request]
+
 ;;   (redirect "/chronicle/index.html"))
 
 (defn base-routes
@@ -46,6 +47,7 @@
    ["/games" :games (page/page "games")]
    ["/about" :about (page/page "about")]
    (sol/sol-routes)
+   sol-previous/sol-routes
    ;; ["/chronicle" :chronicle chronicle]
    ;; lastdays/lastdays-routes
    think/think-routes])

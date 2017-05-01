@@ -34,6 +34,8 @@ var loadStripe = function() {
       // https://stripe.com/docs/charges
       successElement.querySelector('.token').textContent = result.token.id;
       successElement.classList.add('visible');
+      console.log(result)
+      $.post("/sol/charge", {token: result.token})
     } else if (result.error) {
       errorElement.textContent = result.error.message;
       errorElement.classList.add('visible');
