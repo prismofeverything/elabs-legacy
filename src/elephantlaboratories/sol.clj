@@ -1,13 +1,17 @@
 (ns elephantlaboratories.sol
-  (:require [clojure.string :as string] 
+  (:require [clojure.set :as set]
+            [clojure.string :as string]
             [clojure.java.jdbc :as j]
             [byte-streams :as bytes]
+            [cheshire.core :as json]
             [manifold.deferred :as defer]
             [aleph.http :as http]
+            [aleph.http.server :as server]
             [antlers.core :as antlers]
             [polaris.core :as polaris]
             [taoensso.timbre :as log]
             [ring.util.codec :as codec]
+            [ring.util.response :as response]
             [elephantlaboratories.page :as page]))
 
 (def db
@@ -24,6 +28,10 @@
    {:secret (System/getenv "STRIPE_LIVE_SECRET")
     :public (System/getenv "STRIPE_LIVE_PUBLIC")}})
 
+(def easypost
+  {:test
+   {:secret (System/getenv "EASYPOST_SECRET")}})
+
 (defn confirm
   [request]
   (let [test (-> request :params :signup-test)
@@ -36,27 +44,44 @@
         (j/insert! db :person person)
         ((page/page "sol-thanks") (merge request person))))))
 
-(defn charge
+(defn charge!
+  [secret token amount]
+  (log/info secret token amount)
+  @(defer/chain
+     (http/post
+      "https://api.stripe.com/v1/charges"
+      {:basic-auth [secret ""]
+       :form-params
+       {:amount amount
+        :currency "usd"
+        :description "test!"
+        :source token}})
+     :body
+     bytes/to-string))
+
+(defn store-charge
+  [token amount params response]
+  (log/info token)
+  (log/info amount)
+  (log/info params)
+  (log/info response))
+
+(defn charge-handler
   [request]
   (let [body (bytes/to-string (:body request))
         params (codec/form-decode body "UTF-8")
+        _ (log/info (keys params))
+        secret (get-in stripe [:test :secret])
         token (get params "token[id]")
-        response @(defer/chain
-                    (http/post
-                     "https://api.stripe.com/v1/charges"
-                     {:basic-auth [(get-in stripe [:test :secret]) ""]
-                      :form-params
-                      {:amount 70
-                       :currency "usd"
-                       :description "test!"
-                       :source token}})
-                    :body
-                    bytes/to-string)]
+        amount 70
+        raw (charge! secret token amount)
+        response (json/parse-string raw true)
+        out {:url "/sol-new/confirm" :name (get-in response [:source :name])}]
     (log/info (keys request))
-    (log/info body)
-    (log/info params)
-    (log/info (get params "token[id]"))
-    (log/info response)))
+    (store-charge token amount params response)
+    {:status 200
+     :headers {"Content-Type" "application/json"}
+     :body (json/generate-string out)}))
 
 (defn sol-routes
   []
@@ -67,7 +92,7 @@
     ["/buy" :sol-buy (page/page "sol-buy")]
     ["/thanks" :sol-thanks (page/page "sol-thanks")]
     ["/confirm" :sol-confirm (page/page "sol-confirm")]
-    ["/charge" :sol-charge {:POST #'charge}]]])
+    ["/charge" :sol-charge {:POST #'charge-handler}]]])
 
 (defn minimum-level
   [printing freight shipping pledge]
