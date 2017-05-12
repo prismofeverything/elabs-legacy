@@ -2,80 +2,81 @@
 
 <html lang="en">
   <head>
-	  <meta charset="utf-8">
-	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  
-	  <title>{{title}}</title>
-	  <meta name="description" content="Sol: Last Days of a Star, the much-anticipated game of solar destruction and salvation, is a strategic board game for 1–5 players. Easy-to-learn rules, a deep decision space, and a wealth of scenarios and variant play modes deliver endless replayability.">
-	  
-	  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	  <link rel="manifest" href="/manifest.json">
-	  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#706d90">
-	  <meta name="theme-color" content="#ffffff">
-	  
-	  <!-- Cloud Typography Web Fonts -->
-	  <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6128176/7370172/css/fonts.css" />
-	  
-	  <!-- Sol Website Styles -->	
-	  <link rel="stylesheet" type="text/css" href="/assets/js/vendor/Chocolat-master/dist/css/chocolat.css" />
-	  <link rel="stylesheet" href="/assets/styles/styles.css"><!-- TO DO, COMBINE ALL CSS -->
-	  
-	  <!-- Prefix-Free https://leaverou.github.io/prefixfree/ -->
-	  <script src="/assets/js/vendor/prefixfree.min.js"></script>
-	  
-	  <!-- Sol Website Scripts - Header -->
-	  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>	
-	  
-	  <!--[if lt IE 9]>
-	      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	      <![endif]-->
-	  
-	  <!-- Stripe -->
-	  <script src="https://js.stripe.com/v3/"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>{{title}}</title>
+    <meta name="description" content="Sol: Last Days of a Star, the much-anticipated game of solar destruction and salvation, is a strategic board game for 1–5 players. Easy-to-learn rules, a deep decision space, and a wealth of scenarios and variant play modes deliver endless replayability.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#706d90">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- Cloud Typography Web Fonts -->
+    <link rel="stylesheet" href="https://cloud.typography.com/6128176/7370172/css/fonts.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6128176/7370172/css/fonts.css" /> -->
+    
+    <!-- Sol Website Styles --> 
+    <link rel="stylesheet" type="text/css" href="/assets/js/vendor/Chocolat-master/dist/css/chocolat.css" />
+    <link rel="stylesheet" href="/assets/styles/styles.css"><!-- TO DO, COMBINE ALL CSS -->
+    
+    <!-- Prefix-Free https://leaverou.github.io/prefixfree/ -->
+    <script src="/assets/js/vendor/prefixfree.min.js"></script>
+    
+    <!-- Sol Website Scripts - Header -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>    
+    
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
 
-  <body class="body--ele">	
+  <body class="body--ele">  
     <nav class="headernav headernav--ele">
-	    <ul class="headernav__menu headernav__menu--ele">
-		    <li class="headernav__menu__item headernav__menu__item--home  headernav__menu__item--home--ele"><a href="/"><img src="/assets/images/elabs/logo_elephantlab-symbol_@4x.png" alt="Elephant Laboratories Logo" class="header__logo header__logo--ele" width="53" height="35" /> <span class="headernav__menu__item--home__tagline headernav__menu__item--home__tagline--ele">Elephant<br />
-			        Laboratories</span></a></li>
-		    <!-- <li class="headernav__menu__item"><a href="/sol/play.php">Get<span class="smallest-hide-inline"> our</span> Merch »</a></li> -->
-		    <li class="headernav__menu__item"><a href="/sol/">Buy<span class="smallest-hide-inline"> our game</span> Sol »</a></li>
-	    </ul>
+      <ul class="headernav__menu headernav__menu--ele">
+        <li class="headernav__menu__item headernav__menu__item--home  headernav__menu__item--home--ele"><a href="/"><img src="/assets/images/elabs/logo_elephantlab-symbol_@4x.png" alt="Elephant Laboratories Logo" class="header__logo header__logo--ele" width="53" height="35" /> <span class="headernav__menu__item--home__tagline headernav__menu__item--home__tagline--ele">Elephant<br />
+              Laboratories</span></a></li>
+        <!-- <li class="headernav__menu__item"><a href="/sol/play.php">Get<span class="smallest-hide-inline"> our</span> Merch »</a></li> -->
+        <li class="headernav__menu__item"><a href="/sol/">Buy<span class="smallest-hide-inline"> our game</span> Sol »</a></li>
+      </ul>
     </nav>
     {{%content}}
     {{/content}}
     <footer class="footer footer--ele">
-	    <ul class="footer__menu footer__menu--ele">
-		    <li class="footer__menu__logo">
-			    <a href="/"><img src="/assets/images/elabs/footer_logo_elelab_@2x.png" alt="Elephant Laboratories Logo" class="footer__logo" width="65" height="45" /></a>
-			    <p class="footer__menu__logo__broughttoyou"><a href="http://www.elephantlaboratories.com"><span class="broughttoyou__elabs--ele">Elephant Laboratories</span> <span class="broughttoyou__pdx">in Portland, Oregon</span></a></p>
-		    </li>
-		    <li class="footer__menu__news">
-			    <form class="subscribe" action="{{route-for :sol-confirm {} }}">
-				    <label for="email">Join our mailing list</label>
-				    <div class="subscribe__inputgroup">
-					    <input type="text" class="subscribe__email" name="email" id="email"><input type="submit" class="subscribe__submit subscribe__submit--ele" value="sign up">
-				    </div>				
-			    </form>
-		    </li>
-		    <li class="footer__menu__social">
-			    <p>Connect with us</p>
-			    <p class="footer__menu__social__icons">
-				    <a href="https://boardgamegeek.com/boardgame/174837/sol-last-days-star" rel="external"><img src="/assets/images/elabs/footer_connect_bgg_@2x.png" alt="BoardGameGeek" width="32" height="30" class="icon" /></a> 
-				    <a href="http://twitter.com/elephantnahpele" rel="external"><img src="/assets/images/elabs/footer_connect_twitter_@2x.png" alt="Twitter" width="24" height="30" class="icon" /></a> 
-				    <a href="http://facebook.com/ElephantLabsGames" rel="external"><img src="/assets/images/elabs/footer_connect_facebook_@2x.png" alt="Facebook" width="24" height="30" class="icon" /></a> 
-				    <a href="https://www.kickstarter.com/projects/elephantlaboratories/sol-last-days-of-a-star/" rel="external"><img src="/assets/images/elabs/footer_connect_kickstarter_@2x.png" alt="Kickstarter" width="19" height="30" class="icon" /></a>
-				  </p>
-		    </li>
-	    </ul>
-	    <div class="footer__copyright footer__copyright--ele">
-		    <p>&copy; 2017 Elephant Laboratories, LLC. <nobr>All rights reserved</nobr></p>
-		    <p>Built by <a href="https://www.happyfanfare.com" rel="external">Happy Fanfare</a></p>
-	    </div>
+      <ul class="footer__menu footer__menu--ele">
+        <li class="footer__menu__logo">
+          <a href="/"><img src="/assets/images/elabs/footer_logo_elelab_@2x.png" alt="Elephant Laboratories Logo" class="footer__logo" width="65" height="45" /></a>
+          <p class="footer__menu__logo__broughttoyou"><a href="http://www.elephantlaboratories.com"><span class="broughttoyou__elabs--ele">Elephant Laboratories</span> <span class="broughttoyou__pdx">in Portland, Oregon</span></a></p>
+        </li>
+        <li class="footer__menu__news">
+          <form class="subscribe" action="{{route-for :sol-confirm {} }}">
+            <label for="email">Join our mailing list</label>
+            <div class="subscribe__inputgroup">
+              <input type="text" class="subscribe__email" name="email" id="email"><input type="submit" class="subscribe__submit subscribe__submit--ele" value="sign up">
+            </div>              
+          </form>
+        </li>
+        <li class="footer__menu__social">
+          <p>Connect with us</p>
+          <p class="footer__menu__social__icons">
+            <a href="https://boardgamegeek.com/boardgame/174837/sol-last-days-star" rel="external"><img src="/assets/images/elabs/footer_connect_bgg_@2x.png" alt="BoardGameGeek" width="32" height="30" class="icon" /></a> 
+            <a href="http://twitter.com/elephantnahpele" rel="external"><img src="/assets/images/elabs/footer_connect_twitter_@2x.png" alt="Twitter" width="24" height="30" class="icon" /></a> 
+            <a href="http://facebook.com/ElephantLabsGames" rel="external"><img src="/assets/images/elabs/footer_connect_facebook_@2x.png" alt="Facebook" width="24" height="30" class="icon" /></a> 
+            <a href="https://www.kickstarter.com/projects/elephantlaboratories/sol-last-days-of-a-star/" rel="external"><img src="/assets/images/elabs/footer_connect_kickstarter_@2x.png" alt="Kickstarter" width="19" height="30" class="icon" /></a>
+          </p>
+        </li>
+      </ul>
+      <div class="footer__copyright footer__copyright--ele">
+        <p>&copy; 2017 Elephant Laboratories, LLC. <nobr>All rights reserved</nobr></p>
+        <p>Built by <a href="https://www.happyfanfare.com" rel="external">Happy Fanfare</a></p>
+      </div>
     </footer>
     
     <script src="/assets/js/vendor/REM-unit-polyfill-master/js/rem.min.js" type="text/javascript"></script>

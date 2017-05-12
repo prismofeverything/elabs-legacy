@@ -13,7 +13,8 @@
    [manifold.stream :as stream]
    [aleph.http :as http]
    [ring.middleware.resource :as resource]
-   [ring.middleware.reload :as reload]   
+   [ring.middleware.content-type :as content-type]
+   [ring.middleware.reload :as reload]
    ;; [org.httpkit.server :as httpkit] 
    ;; [ring.util.response :refer [redirect]]
    [taoensso.timbre :as log]
@@ -59,6 +60,7 @@
         (wrap-route-for built)
         (resource/wrap-resource "communal")
         (resource/wrap-resource "public")
+        (content-type/wrap-content-type)
         (reload/wrap-reload))))
 
       ;; (ring.middleware.keyword-params/wrap-keyword-params)
