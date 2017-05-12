@@ -12,13 +12,8 @@
             [taoensso.timbre :as log]
             [ring.util.codec :as codec]
             [ring.util.response :as response]
+            [elephantlaboratories.db :as db]
             [elephantlaboratories.page :as page]))
-
-(def db
-  {:subprotocol "postgresql"
-   :subname "//127.0.0.1:5432/sol"
-   :user (System/getenv "SOL_USER")
-   :password (System/getenv "SOL_PASSWORD")})
 
 (def stripe
   {:test
@@ -27,10 +22,6 @@
    :live
    {:secret (System/getenv "STRIPE_LIVE_SECRET")
     :public (System/getenv "STRIPE_LIVE_PUBLIC")}})
-
-(def easypost
-  {:test
-   {:secret (System/getenv "EASYPOST_SECRET")}})
 
 (defn confirm
   [request]
@@ -41,7 +32,7 @@
     (if (= test "1")
       (do
         (println (str person))
-        (j/insert! db :person person)
+        (j/insert! db/db :person person)
         ((page/page "sol-thanks") (merge request person))))))
 
 (defn charge!

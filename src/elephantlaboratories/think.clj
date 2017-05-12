@@ -3,13 +3,8 @@
             [clojure.java.jdbc :as j]
             [antlers.core :as antlers]
             [polaris.core :as polaris]
+            [elephantlaboratories.db :as db]
             [elephantlaboratories.page :as page]))
-
-(def db
-  {:subprotocol "postgresql"
-   :subname "//127.0.0.1:5432/sol"
-   :user (System/getenv "SOL_USER")
-   :password (System/getenv "SOL_PASSWORD")})
 
 (defn insert-newlines
   [thought]
@@ -24,7 +19,7 @@
 
 (defn think
   [request]
-  (let [thought (first (j/query db ["select * from thought order by random() limit 1"]))]
+  (let [thought (first (j/query db/db ["select * from thought order by random() limit 1"]))]
     ((page/page "think-thought")
      (assoc request :thought (insert-newlines thought)))))
 
