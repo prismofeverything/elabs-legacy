@@ -3,13 +3,8 @@
             [clojure.java.jdbc :as j]
             [antlers.core :as antlers]
             [polaris.core :as polaris]
+            [elephantlaboratories.db :as db]
             [elephantlaboratories.page :as page]))
-
-(def db
-  {:subprotocol "postgresql"
-   :subname "//127.0.0.1:5432/sol"
-   :user (System/getenv "SOL_USER")
-   :password (System/getenv "SOL_PASSWORD")})
 
 (defn signup
   [request]
@@ -20,11 +15,11 @@
     (if (= test "1")
       (do
         (println (str person))
-        (j/insert! db :person person)
+        (j/insert! db/db :person person)
         ((page/page "sol-thanks") (merge request person))))))
 
 (def sol-routes
-  ["/sol" :sol-home (page/page "solprevious-story") 
+  ["/sol-previous" :sol-home (page/page "solprevious-story") 
    [["/story" :sol-story (page/page "solprevious-story")]
     ["/game" :sol-game (page/page "solprevious-game")]
     ["/worlds" :sol-worlds (page/page "solprevious-worlds")]

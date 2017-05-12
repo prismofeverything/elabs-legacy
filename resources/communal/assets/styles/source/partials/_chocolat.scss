@@ -5,11 +5,20 @@
  *---------------------------------------------------------------------------*/
  
  
-.chocolat-overlay{
+.chocolat-overlay {
     background-color:$dark;
 }
 
-.chocolat-wrapper{
+.chocolat-wrapper {
     color: $bright;
     font-weight: 700;
+}
+
+.chocolat-wrapper .chocolat-fullscreen,
+.chocolat-wrapper .chocolat-description {
+	display:none;
+}
+
+.chocolat-wrapper .chocolat-pagination {
+	margin-right: 0;
 }

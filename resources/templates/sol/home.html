@@ -1,14 +1,14 @@
 {{< templates/sol/layout.html}}
 {{%content}}
-<header class="container container--dark container--masthead">
+<header class="container container--homeheader">
 	<div class="constrainer">
 		<div class="masthead measure">
 			<h1 class="h1 masthead__h1"><img src="/assets/images/sol_logo_@2x.png" alt="Sol" width="500" height="270" class="masthead__image" /></h1>
 			<h2 class="h2 masthead__h2">Last Days of <nobr>a Star</nobr> <span>From Elephant Laboratories</span></h2>
-			<p class="copy">Sol is a strategic board game for 1–5 players. Easy-to-learn rules, a deep decision space, and a wealth of scenarios and variant play modes deliver endless replayability. Playtested and honed at countless cons, local game stores, and private living rooms, now, at the conclusion of a wildly successful Kickstarter, the much-anticipated game of solar destruction and salvation can <nobr>be yours.</nobr></p>
+			<p>Sol: Last Days of a Star is a strategic game of solar destruction and salvation for 1–5 players. Play as one of the five worlds orbiting the Sun, diving into the searing plasma to harvest critical energy&thinsp;—&thinsp;energy needed to fuel your escape before the Sun goes supernova. Sol has simple, easy to learn rules, a deep decision space and emergent strategy that unfolds over <nobr>multiple plays</nobr>.</p>
 			<p class="buttonwrap"><a href="#what" class="button buttonwrap__button">Learn More</a> <a href="{{route-for :sol-buy {} }}" class="button buttonwrap__button button--outline">Pre-Order</a></p>
 			<aside class="current-status">
-				<strong>CURRENT STATUS</strong>: Manufacturing. Est. ship date <nobr>July 17, 2017.</nobr> <a href="https://www.kickstarter.com/projects/elephantlaboratories/sol-last-days-of-a-star/updates">More »</a>
+				<strong>CURRENT STATUS</strong>: Manufacturing. Estimated ship date for Kickstarter backers is <nobr>July 2017.</nobr> &thinsp; <a href="https://www.kickstarter.com/projects/elephantlaboratories/sol-last-days-of-a-star/updates" rel="external">More »</a>
 			</aside>
 		</div>		
 	</div>
@@ -18,8 +18,8 @@
 	<div class="container container--quote">
 		<div class="constrainer">
 			<blockquote class="container--quote__bq">
-				<p>“One of the most inventive logistics games of the past few years. Not a difficult game to learn, it has the feel of something much longer and more complicated. The game brims with wonder. [It] taps directly into the best traditions of both science fiction and tabletop gaming.”</nobr></p>
-				<cite>Cole Wehrle, designer of Pax Pamir</cite>
+				<p>“[Sol] is one of the most inventive logistics games of the past few years&thinsp;—&thinsp;the strange science fiction offspring of Roads and Boats and <nobr>Cosmic Encounter.”</nobr></p>
+				<cite><span class="cite__author">Cole Wehrle</span> <span class="cite__role">designer of Pax Pamir</span></cite>
 			</blockquote>
 		</div>
 	</div>
@@ -28,37 +28,44 @@
 		<div class="constrainer">
 			<div class="half-and-half">
 				<div class="half-and-half__item">
-					<img src="https://unsplash.it/960" alt="Product Shot: Sol" class="image--featured">
+					<img src="/assets/images/box_hero_solo_@2x.png" alt="Product Shot: Sol" class="image--featured" width="500" height="500">
 				</div>
 				<div class="half-and-half__item">
-					<h2 class="h2">What is Sol?</h2>
-					<p>Players assume the role of of one of five factions, racing against time to gather resources needed to launch an Ark into interstellar space. Deploy sundivers from your orbiting mothership and use them to build bridgeheads deeper into the sun. Construct and position energy nodes, sundiver foundries, and transmission towers—or use your opponents’ for your own ends. Beam the energy you harvest to your Ark, imparting the momentum it will need to escape the coming supernova!</p>
-					<p>Sol is competitive, but not zero-sum. Often the best move is mutually beneficial, but Sol is neither a collaborative nor cooperative game. It’s a race game, where more aggressive gameplay speeds the clock, challenging players to leaven ambition with restraint. And it’s a [something something] with [cards that do things?].</p>
-					<p><a href="{{route-for :sol-buy {} }}" class="button button--outline">Pre-Order</a></p>
+					<div class="sol-rule sol-rule--gold">
+						<h2 class="h2">What is Sol?</h2>
+						<p>Sol is a race against time, carefully balanced with a fresh engine-building mechanic uniquely rooted in mutual benefit and competition. Each game of Sol begins as an open starscape, ripe for competitive optimization and careful planning at every turn: build your energy node so that other players are enticed by its strategic placement; activate an opponent’s foundry when they are low on energy so you capture the bonus; plot a multiple activation of other players’ transmit towers without ever having to build your own. There are countless approaches to explore in <strong>Sol: Last Days <nobr>of a Star.</nobr></strong></p>
+						<p>Sol is low-luck but not prone to cause AP. The high degree of player interaction and simple action set keeps turns moving quickly, and the array of Instability Effects allow for a surprisingly customizable vibe to <nobr>each game.</nobr></p>
+						<p><a href="{{route-for :sol-buy {} }}" class="button button--outline">Pre-Order</a></p>
+					</div>
 				</div>
 			</div>
-			<hr />
-			<h3 class="h3">Many Ways <nobr>to Play</nobr></h3>
-			<div class="two-columns">
-				<p>Sol’s primary play mode allows for 2–5 players, with a compelling solo play variant. The 96 instability and 30 instability effect cards ensure that every session is unique, and allows fine-tuning the game’s duration, degree of difficulty, and player-v-player aggressiveness.</p>
-				<p>Players can also choose to explore Sol as a cooperative “multiplayer-solo” game, to begin gameplay with “vestigial structures” already in place, or add trigger event cards for additional solar unpredictability. <a href="{{route-for :sol-play {} }}">Learn more about the many ways to <nobr>play Sol »</nobr></a></p>
+			<h3 class="h3 align-center">Many Ways <nobr>to Play</nobr></h3>
+			<div class="half-and-half">
+				<div class="half-and-half__item">					
+					<p>Sol’s primary play mode allows for 2–5 players, with a compelling solo play variant. Thirty instability effect cards ensure that every session is unique, and allow fine-tuning the game’s duration, degree of difficulty, and the option to add <nobr>player-v-player conflict.</nobr></p>
+					<p><a href="http://www.elephantlaboratories.com/sol-rulebook.pdf" rel="external"><nobr>Download the rulebook »</nobr></a></p>
+				</div>
+				<div class="half-and-half__item">					
+					<p>Players may also choose to explore Sol as a co-op; choose quick start with “vestigial structures” already in place; or add “trigger event” cards for additional <nobr>solar unpredictability.</nobr></p>
+					<p><a href="{{route-for :sol-play {} }}">Learn more <nobr>about gameplay »</nobr></a></p>
+				</div>
 			</div>
 		</div>	
 	</div>
 	
-	<div class="container container--bright">
+	<div class="container container--dark">
 		<div class="constrainer">
 			<div class="half-and-half">
 				<div class="half-and-half__item">		
 					<h2 class="h2">What’s in <nobr>the box?</nobr></h2>	
-					<ul class="no-bullets two-columns">
+					<ul class="no-bullets two-columns two-columns--narrow">
 						<li>150 Custom plastic player pieces</li>
 						<li>89 Energy cubes</li>
 						<li>30 Instability effect cards</li>
 						<li>96 Instability cards</li>
 						<li>8 Trigger event cards</li>
 						<li>7 Wooden instability tokens</li>
-						<li>1 Double-sided game board</li>
+						<li><nobr>1 Double-sided game board</nobr></li>
 						<li>5 Player holds</li>
 						<li>5 Player aids</li>
 						<li>1 Momentum track</li>
@@ -67,37 +74,46 @@
 						<li>1 Rules summary sheet</li>
 						<li>1 Mythos book</li>
 					</ul>
+					<img src="/assets/images/inthebox_stats_@2x.png" alt="inthebox_stats_@2x" width="423" height="82" />
 				</div>
 				<div class="half-and-half__item half-and-half__item--image">
-					<img src="https://unsplash.it/960/720" alt="Product Shot: Sol" class="image--featured">						
-			        <p id="chocolat_gallery" class="gallery" data-chocolat-title="Sol Component Gallery">
-		                <strong>View Images</strong>
-		                <span class="gallery__menu">
-			                <a class="button button--gallery chocolat-image" href="/assets/images/bkg_solworld_01.jpg" title="Image 1 Caption">1</a>
-			                <a class="button button--gallery chocolat-image" href="/assets/images/bkg_quote_01.jpg" title="Image 2 Caption">2</a>
-			                <a class="button button--gallery chocolat-image" href="/assets/images/bkg_solworld_01.jpg" title="Image 3 Caption">3</a>
-			                <a class="button button--gallery chocolat-image" href="/assets/images/bkg_texture_wht.jpg" title="Image 4 Caption">4</a>
-			                <a class="button button--gallery chocolat-image" href="/assets/images/bkg_quote_01.jpg" title="Image 5 Caption">5</a>
+					<img src="/assets/images/box_inthebox_@2x.png" alt="Product Shot: Sol" class="image--featured">						
+					<p id="chocolat_gallery" class="gallery" data-chocolat-title="What’s in the box?">
+						View Images
+						<span class="gallery__menu">
+							<a class="button button--gallery chocolat-image" href="/assets/images/sol-gallery_1.jpg" title="Image 1 Caption">1</a>
+							<a class="button button--gallery chocolat-image" href="/assets/images/sol-gallery_2.jpg" title="Image 2 Caption">2</a>
+							<a class="button button--gallery chocolat-image" href="/assets/images/sol-gallery_3.jpg" title="Image 3 Caption">3</a>
+							<a class="button button--gallery chocolat-image" href="/assets/images/sol-gallery_4.jpg" title="Image 4 Caption">4</a>
+							<a class="button button--gallery chocolat-image" href="/assets/images/sol-gallery_5.jpg" title="Image 5 Caption">5</a>
 						</span>
-			        </p>
+					</p>
 				</div>
 			</div>	
 		</div>
 	</div>
 	
-	<div class="container container--worldsofsol">
+	<div class="container container--worldsofsolhome">
 		<div class="constrainer">
 			<div class="half-and-half">
 				<div class="half-and-half__item">
-					<h2 class="h2">The Worlds <nobr>of Sol</nobr></h2>
-					<p>Sol is set in a richly-textured utopian future, a time of limitless resources in which war, poverty and injustice are distant memories…until the sun begins to die. The lushly illustrated Mythos Book, included with your copy of Sol, provides a window into the vibrant cultures competing to preserve their way of life in the face of impending solar annihilation. <a href="{{route-for :sol-new-worlds {} }}">Which faction will <nobr>you play?</nobr></a> Will you launch your culture’s Ark in time?</p>
-					<h2 class="h2">Resources <nobr>and Links</nobr></h2>
-					<p>Watch explainers and interviews with Sol’s design team. Immerse yourself in playthrough videos and reviews from enthusiastic testers. Download the complete manual for the most in-depth documentation of the rules of play. Read all the nice things others are saying about Sol. Get yourself some wallpaper… <a href="{{route-for :sol-background {} }}"><nobr>Use that bandwidth »</nobr></a></p>
+					<div class="sol-rule sol-rule--white">
+						<h2 class="h2">The Worlds <nobr>of Sol</nobr></h2>
+						<p>The story behind Sol is a richly-textured utopian future, a time of limitless resources in which war, poverty, and suffering are distant memories…until the sun begins to die. The 32-page Mythos Book, beautifully written by CJ Hallowell, provides a window into the vibrant cultures competing to preserve their way of life in the face of impending <nobr>solar annihilation.</nobr></p>
+						<p><a href="{{route-for :sol-new-worlds {} }}">Learn more <nobr>about Sol Mythos »</nobr></a></p>
+					</div>
+					<div class="sol-rule sol-rule--white">
+						<h2 class="h2">Videos <nobr>and Links</nobr></h2>
+						<p>Watch how-to’s, play-throughs and interviews with Sol’s design team. Download the complete rulebook. Read all the nice things others are saying <nobr>about Sol.</nobr></p>
+						<p><a href="{{route-for :sol-background {} }}"><nobr>Check out videos and links »</nobr></a></p>
+					</div>
 				</div>
-				<div class="half-and-half__item half-and-half__item--light">
-					<h2 class="h2">A shared passion</nobr></h2>
-					<p>Sol is the brainchild of brothers Ryan Spangler and Sean Spangler, some of whose earliest memories involve playing—and making—board games. Their shared passion for strategy, camaraderie, adrenaline, and the act of bringing something new into the world drives them to design the games that they want to play. We hope you’ll want to play them as well.</p>
-					<p>Sol is by all definitions an indy game, but it owes its existence to a vast supportive community of family, friends, and enthusiastic backers. <a href="{{route-for :sol-thanks {} }}">We have so many people <nowrap>to thank</nowrap>.</a></p>
+				<div class="half-and-half__item half-and-half__item--light container--worldsofsol__floating-heads">
+					<img src="/assets/images/portrait_ryan-sean_@2x.png" alt="portrait_ryan-sean_@2x" width="113" height="113" class="image--floating-head" />
+					<h2 class="h2">Brothers <nobr>in Space</nobr></h2>
+					<p>Sol is the creation of brothers Ryan Spangler and Sean Spangler, whose earliest memories involve playing—and making—board games together. Their shared passion for strategy, invention, collaboration, and the act of bringing something new into the world drove them to design a game that they continue to enjoy playing…years after <nobr>its inception.</nobr></p>
+					<p>Sol is by all definitions an indy game, but it owes its existence to a vast supportive community of family, friends, and <nobr>enthusiastic backers.</nobr></p>
+					<p><a href="{{route-for :sol-thanks {} }}">We have so many <nobr>to thank »</nobr></a></p>
 				</div>
 			</div>
 		</div>		
@@ -105,11 +121,13 @@
 </main>
 
 <script>
-    $(function(){
-        $('#chocolat_gallery').Chocolat({
-            loop           : true,
-            imageSize: 'contain'
-        });
-    });
+	$(function(){
+		$('#chocolat_gallery').Chocolat({
+			loop			: true,
+			imageSize	: 'contain',
+			enableZoom	: false,
+			fullScreen	: false,
+		});
+	});
 </script>
 {{/content}}

@@ -43,9 +43,9 @@
 
 (defn base-routes
   []
-  [["/" :home (page/page "home")]
-   ["/games" :games (page/page "games")]
-   ["/about" :about (page/page "about")]
+  [["/" :home (page/page "index" {:title "Elephant Laboratories"})]
+   ;; ["/games" :games (page/page "games")]
+   ;; ["/about" :about (page/page "about")]
    (sol/sol-routes)
    sol-previous/sol-routes
    ;; ["/chronicle" :chronicle chronicle]

@@ -8,12 +8,13 @@
     (str "templates/" path ".html")))
 
 (defn page
-  [slug]
-  (fn [request]
-    (let [template (template-for slug)]
-      {:status 200 
-       :headers {"Content-Type" "text/html"}
-       :body (antlers/render-file 
-              template
-              (merge request {:page slug :title slug (keyword slug) true}))})))
+  ([slug] (page slug {}))
+  ([slug env]
+   (fn [request]
+     (let [template (template-for slug)]
+       {:status 200 
+        :headers {"Content-Type" "text/html"}
+        :body (antlers/render-file 
+               template
+               (merge request env {:page slug (keyword slug) true}))}))))
 

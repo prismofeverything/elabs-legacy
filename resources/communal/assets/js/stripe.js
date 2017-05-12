@@ -281,27 +281,28 @@ function elephantLaboratories() {
     var stripe = Stripe('pk_test_01lVNaphdSv8xosyLvSm5ckt');
     var elements = stripe.elements();
 
+    ////-------------- STYLES FOR CREDIT CARD INPUT GO HERE
+    //// https://stripe.com/docs/elements/reference ---------------
     var card = elements.create('card', {
-      //// STYLES FOR CREDIT CARD INPUT GO HERE: https://stripe.com/docs/elements/reference
       style: {
         base: {
-          iconColor: '#666EE8',
-          color: '#31325F',
-          lineHeight: '40px',
-          fontWeight: 300,
-          fontFamily: "'Helvetica Neue', Helvetica, sans-serif",
-          fontSize: '15px',
+          iconColor: '#ffffff',
+          color: '#ffffff',
+          lineHeight: '18px',
+          fontWeight: 400,
+          fontFamily: '"Gotham SSm A", "Gotham SSm B", Arial, sans-serif',
+          fontSize: '16px',
 
           '::placeholder': {
-            color: '#CFD7E0',
+            color: '#D2CCB5',
           },
         },
       }
     });
+    /////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
 
     card.mount('#card-element');
-
-    console.log('!!!!!!!!!!!!')
 
     $('#success').hide()
     $('#error').hide()
@@ -309,16 +310,11 @@ function elephantLaboratories() {
     function setOutcome(details) {
       return function(result) {
         if (result.token) {
-          // Use the token to create a charge or a customer
-          // https://stripe.com/docs/charges
-          console.log(result)
           details.token = result.token
-          $.post('/sol-new/charge', details, function(data) {
+          $.post('/sol/buy.php', details, function(data) {
             $('#success').show();
             $('#buy-sol').hide();
             $('#thank-you-name').text(data.name);
-            console.log(data);
-            // window.location = data.url;
           });
         } else if (result.error) {
           $('.error').text(result.error.message);

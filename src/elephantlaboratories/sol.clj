@@ -67,7 +67,7 @@
         amount 70
         raw (charge! secret token amount)
         response (json/parse-string raw true)
-        out {:url "/sol-new/confirm" :name (get-in response [:source :name])}]
+        out {:url "/sol/confirm" :name (get-in response [:source :name])}]
     (log/info (keys request))
     (store-charge token amount params response)
     {:status 200
@@ -76,13 +76,13 @@
 
 (defn sol-routes
   []
-  ["/sol-new" :sol-new-home (page/page "sol-home")
-   [["/story" :sol-play (page/page "sol-play")]
-    ["/worlds" :sol-new-worlds (page/page "sol-worlds")]
-    ["/background" :sol-background (page/page "sol-background")]
-    ["/buy" :sol-buy (page/page "sol-buy")]
-    ["/thanks" :sol-thanks (page/page "sol-thanks")]
-    ["/confirm" :sol-confirm (page/page "sol-confirm")]
+  ["/sol" :sol-new-home (page/page "sol-home" {:title "Sol"})
+   [["/story" :sol-play (page/page "sol-play" {:title "Gameplay"})]
+    ["/worlds" :sol-new-worlds (page/page "sol-worlds" {:title "Mythos"})]
+    ["/background" :sol-background (page/page "sol-background" {:title "Media"})]
+    ["/buy" :sol-buy (page/page "sol-buy" {:title "Buy"})]
+    ["/thanks" :sol-thanks (page/page "sol-thanks" {:title "Thank You"})]
+    ["/confirm" :sol-confirm (page/page "sol-confirm" {:title "Thanks!"})]
     ["/charge" :sol-charge {:POST #'charge-handler}]]])
 
 (defn minimum-level
