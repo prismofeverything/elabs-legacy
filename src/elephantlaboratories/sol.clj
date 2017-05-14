@@ -14,8 +14,9 @@
    [taoensso.timbre :as log]
    [ring.util.codec :as codec]
    [ring.util.response :as response]
-   [elephantlaboratories.mongo :as db]
    [elephantlaboratories.page :as page]
+   [elephantlaboratories.mongo :as db]
+   [elephantlaboratories.postal :as postal]
    [elephantlaboratories.shipping :as shipping]))
 
 (def stripe
@@ -85,7 +86,29 @@
     :stripe stripe}))
 
 (defn email-confirmation!
-  [params])
+  [{:keys [email name shipping total-cost]}]
+  (let [to (str name " <" email ">")
+        subject "Your order for Sol: Last Days of a Star"
+        body (str
+              "Dear " name ",\n"
+              "Thank you for your order of Sol: Last Days of a Star!\n"
+              "Your total with the game and shipping together comes to "
+              total-cost ".\n"
+              "We will ship it to this address:\n"
+              (:address1 shipping) "\n"
+              (:address2 shipping) "\n"
+              (:city shipping) "\n"
+              (:state shipping) "\n"
+              (:country shipping) "\n"
+              (:zip shipping) "\n"
+              "Let us know if you have any questions!\n"
+              "With great gratitude,\n"
+              "Elephant Laboratories\n"
+              "Ryan, Sean and Jodi")]
+    (postal/send-email!
+     {:to to
+      :subject subject
+      :body body})))
 
 (def base-game-cost 60)
 
@@ -110,7 +133,7 @@
         response (json/parse-string raw true)
         out {:url "/sol/confirm" :name (get-in response [:source :name])}]
     (store-charge! db token total-cost params response)
-    (email-confirmation! params)
+    (email-confirmation! (assoc params :total-cost total-cost))
     {:status 200
      :headers {"Content-Type" "application/json"}
      :body (json/generate-string out)}))

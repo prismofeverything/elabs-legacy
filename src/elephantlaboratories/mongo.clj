@@ -21,3 +21,7 @@
 (defn find-all
   [db where]
   (mongo/find-maps db where))
+
+(defn timestamp
+  [record]
+  (.getTimestamp (:_id record)))

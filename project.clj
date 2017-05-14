@@ -12,6 +12,7 @@
                  [com.taoensso/timbre "4.10.0"]
                  [ring "1.6.0-RC3"]
                  [com.novemberain/monger "3.1.0"]
+                 [com.draines/postal "2.0.2"]
                  ;; [http-kit "2.1.12"]
                  ;; [cryogen-markdown "0.1.1"]
                  ;; [cryogen-core "0.1.20"]
