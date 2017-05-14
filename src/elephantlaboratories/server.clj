@@ -23,6 +23,7 @@
    ;; [cryogen-core.watcher :as cryo-watcher]
    ;; [cryogen-core.plugins :as cryo-plugins]
    ;; [cryogen-core.compiler :as cryo-compiler]
+   [elephantlaboratories.mongo :as mongo]
    [elephantlaboratories.page :as page]
    [elephantlaboratories.sol :as sol]
    [elephantlaboratories.sol-previous :as sol-previous]
@@ -43,11 +44,11 @@
 ;;   (redirect "/chronicle/index.html"))
 
 (defn base-routes
-  []
+  [config]
   [["/" :home (page/page "index" {:title "Elephant Laboratories"})]
    ;; ["/games" :games (page/page "games")]
    ;; ["/about" :about (page/page "about")]
-   (sol/sol-routes)
+   (sol/sol-routes config)
    sol-previous/sol-routes
    ;; ["/chronicle" :chronicle chronicle]
    ;; lastdays/lastdays-routes
@@ -80,9 +81,12 @@
 
 (defn start
   [config]
-  (http/start-server (app (base-routes)) {:port (or (:port config) 21112)}))
+  (let [mongo (mongo/connect! {:database "sol-last-days-of-a-star"})]
+    (http/start-server
+     (app (base-routes {:mongo mongo}))
+     {:port (or (:port config) 21112)})))
 
-(defn -main 
+(defn -main
   [& args]
   ;; (init-cryo)
   (println "^^^ elephant laboratories up ^^^")

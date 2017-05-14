@@ -253,29 +253,22 @@ function elephantLaboratories() {
     'ZW': 'Zimbabwe'
   }  
 
-  var state = {
-    'base': 70,
-    'shipping': 15
-  };
+  var state;
 
-  var shippingTiers = {
-    'one': {
-      'set': ['US'],
-      'cost': 10
-    },
+  function loadMatrix() {
+    $.get("/sol/matrix", function(matrix) {
+      console.log(matrix);
+      var country = $('#shipping-country')[0].value;
+      console.log(country);
+      state = {
+        base: matrix['base-cost'],
+        shipping: calculateShipping(matrix, country)
+      }
 
-    'two': {
-      'set': ['CA', 'GB'],
-      'cost': 15
-    },
-
-    'three': {
-      'set': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB'],
-      'cost': 25
-    }
+      setTotal(matrix, country);
+      loadEverything(matrix);
+    })
   }
-
-  var MAX_COST = 80;
 
   function loadStripe() {
     var stripe = Stripe('pk_test_01lVNaphdSv8xosyLvSm5ckt');
@@ -311,7 +304,7 @@ function elephantLaboratories() {
       return function(result) {
         if (result.token) {
           details.token = result.token
-          $.post('/sol/buy.php', details, function(data) {
+          $.post('/sol/charge', details, function(data) {
             $('#success').show();
             $('#buy-sol').hide();
             $('#thank-you-name').text(data.name);
@@ -335,6 +328,7 @@ function elephantLaboratories() {
         phone: form.querySelector('input[name=phone]').value,
         email: form.querySelector('input[name=email]').value,
         shipping: {
+          name: form.querySelector('input[name=name]').value,
           address1: form.querySelector('input[name=shipping-street1]').value,
           address2: form.querySelector('input[name=shipping-street2]').value,
           city: form.querySelector('input[name=shipping-city]').value,
@@ -343,6 +337,7 @@ function elephantLaboratories() {
           country: form.querySelector('select[name=shipping-country]').value
         },
         billing: {
+          name: form.querySelector('input[name=name]').value,
           address1: form.querySelector('input[name=billing-street1]').value,
           address2: form.querySelector('input[name=billing-street2]').value,
           city: form.querySelector('input[name=billing-city]').value,
@@ -372,18 +367,38 @@ function elephantLaboratories() {
     });
   }
 
-  function loadShipping() {
+  function calculateShipping(matrix, country) {
+    console.log(country)
+    var tier = Object.keys(matrix['tiers']).filter(function(tier) {
+      var index = matrix['tiers'][tier].set.indexOf(country) > -1;
+      return index;
+    });
+
+    var cost = tier.length > 0 ? matrix['tiers'][tier[0]].cost : matrix['rest-of-the-world'];
+    return cost;
+  }
+
+  function setTotal(matrix, country) {
+    state.base = matrix['base-cost'];
+    state.shipping = calculateShipping(matrix, country);
+    $('#sol-base').text('$' + state.base);
+    $('#sol-shipping').text('$' + state.shipping);
+    $('#sol-total').text('$' + (state.base + state.shipping));
+  }
+
+  function loadShipping(matrix) {
     $('#shipping-country').on('change', function(event) {
       var country = event.target.value;
-      var tier = Object.keys(shippingTiers).filter(function(tier) {
-        var index = shippingTiers[tier].set.indexOf(country) > -1;
-        return index;
-      });
+      // var tier = Object.keys(matrix['tiers']).filter(function(tier) {
+      //   var index = matrix['tiers'][tier].set.indexOf(country) > -1;
+      //   return index;
+      // });
 
-      var cost = tier.length > 0 ? shippingTiers[tier[0]].cost : MAX_COST;
-      state.shipping = cost;
-      $('#sol-shipping').text('$' + state.shipping)
-      $('#sol-total').text('$' + (state.base + state.shipping))
+      // var cost = tier.length > 0 ? matrix['tiers'][tier[0]].cost : matrix['rest-of-the-world'];
+      setTotal(matrix, country)
+      // state.shipping = calculateShipping(matrix, country);
+      // $('#sol-shipping').text('$' + state.shipping)
+      // $('#sol-total').text('$' + (state.base + state.shipping))
     });
   }
 
@@ -397,9 +412,13 @@ function elephantLaboratories() {
     });
   }
   
-  loadStripe();
-  loadShipping();
-  loadBilling();
+  function loadEverything(matrix) {
+    loadStripe();
+    loadShipping(matrix);
+    loadBilling();
+  }
+
+  loadMatrix();
 } 
 
 $(document).ready(elephantLaboratories)

@@ -1,19 +1,22 @@
 (ns elephantlaboratories.sol
-  (:require [clojure.set :as set]
-            [clojure.string :as string]
-            [clojure.java.jdbc :as j]
-            [byte-streams :as bytes]
-            [cheshire.core :as json]
-            [manifold.deferred :as defer]
-            [aleph.http :as http]
-            [aleph.http.server :as server]
-            [antlers.core :as antlers]
-            [polaris.core :as polaris]
-            [taoensso.timbre :as log]
-            [ring.util.codec :as codec]
-            [ring.util.response :as response]
-            [elephantlaboratories.db :as db]
-            [elephantlaboratories.page :as page]))
+  (:require
+   [clojure.set :as set]
+   [clojure.string :as string]
+   [clojure.pprint :as pprint]
+   [clojure.java.jdbc :as j]
+   [byte-streams :as bytes]
+   [cheshire.core :as json]
+   [manifold.deferred :as defer]
+   [aleph.http :as http]
+   [aleph.http.server :as server]
+   [antlers.core :as antlers]
+   [polaris.core :as polaris]
+   [taoensso.timbre :as log]
+   [ring.util.codec :as codec]
+   [ring.util.response :as response]
+   [elephantlaboratories.mongo :as db]
+   [elephantlaboratories.page :as page]
+   [elephantlaboratories.shipping :as shipping]))
 
 (def stripe
   {:test
@@ -23,67 +26,107 @@
    {:secret (System/getenv "STRIPE_LIVE_SECRET")
     :public (System/getenv "STRIPE_LIVE_PUBLIC")}})
 
-(defn confirm
-  [request]
-  (let [test (-> request :params :signup-test)
-        person {:name (-> request :params :signup-name)
-                :email (-> request :params :signup-email)
-                :message (-> request :params :signup-message)}]
-    (if (= test "1")
-      (do
-        (println (str person))
-        (j/insert! db/db :person person)
-        ((page/page "sol-thanks") (merge request person))))))
-
 (defn charge!
   [secret token amount]
-  (log/info secret token amount)
-  @(defer/chain
-     (http/post
-      "https://api.stripe.com/v1/charges"
-      {:basic-auth [secret ""]
-       :form-params
-       {:amount amount
-        :currency "usd"
-        :description "test!"
-        :source token}})
-     :body
-     bytes/to-string))
+  (when (and secret token amount)
+    (log/info secret token amount)
+    @(defer/chain
+       (http/post
+        "https://api.stripe.com/v1/charges"
+        {:basic-auth [secret ""]
+         :form-params
+         {:amount amount
+          :currency "usd"
+          :description "test!"
+          :source token}})
+       :body
+       bytes/to-string)))
 
-(defn store-charge
-  [token amount params response]
+(defn extract-person
+  [params response]
+  (pprint/pprint params)
+  (pprint/pprint response)
+  params)
+
+(defn pull-key
+  [key]
+  (map
+   (comp keyword last)
+   (re-seq #"\[?([^]\[]+)\]?" key)))
+
+(defn embed-keys
+  [m]
+  (reduce
+   (fn [embed [k v]]
+     (assoc-in embed (pull-key k) v))
+   {} m))
+
+(defn calculate-shipping
+  [{:keys [country]}]
+  (if-let [tier (first
+                 (filter
+                  (fn [[_ tier]]
+                    (log/info tier country)
+                    ((:set tier) country))
+                  (:tiers shipping/shipping-matrix)))]
+    (:cost (last tier))
+    (:rest-of-the-world shipping/shipping-matrix)))
+
+(defn store-charge!
+  [db token total person stripe]
   (log/info token)
-  (log/info amount)
-  (log/info params)
-  (log/info response))
+  (log/info total)
+  (log/info (with-out-str (pprint/pprint person)))
+  (db/insert!
+   db "charges"
+   {:token token
+    :total total
+    :person person
+    :stripe stripe}))
+
+(defn email-confirmation!
+  [params])
+
+(def base-game-cost 60)
+
+(defn load-matrix
+  [request]
+  {:status 200
+   :headers {"Content-Type" "application/json"}
+   :body (json/generate-string shipping/shipping-matrix)})
 
 (defn charge-handler
-  [request]
+  [db request]
+  (log/info db)
   (let [body (bytes/to-string (:body request))
-        params (codec/form-decode body "UTF-8")
-        _ (log/info (keys params))
+        flat (codec/form-decode body "UTF-8")
+        params (embed-keys flat)
+        _ (log/info params)
         secret (get-in stripe [:test :secret])
-        token (get params "token[id]")
-        amount 70
-        raw (charge! secret token amount)
+        token (get-in params [:token :id])
+        shipping-cost (calculate-shipping (:shipping params))
+        total-cost (+ base-game-cost shipping-cost)
+        raw (charge! secret token total-cost)
         response (json/parse-string raw true)
         out {:url "/sol/confirm" :name (get-in response [:source :name])}]
-    (log/info (keys request))
-    (store-charge token amount params response)
+    (store-charge! db token total-cost params response)
+    (email-confirmation! params)
     {:status 200
      :headers {"Content-Type" "application/json"}
      :body (json/generate-string out)}))
 
 (defn sol-routes
-  []
+  [config]
   ["/sol" :sol-new-home (page/page "sol-home" {:title "Sol"})
    [["/story" :sol-play (page/page "sol-play" {:title "Gameplay"})]
     ["/worlds" :sol-new-worlds (page/page "sol-worlds" {:title "Mythos"})]
     ["/background" :sol-background (page/page "sol-background" {:title "Media"})]
+    ["/matrix" :sol-matrix {:GET #'load-matrix}]
     ["/buy" :sol-buy (page/page "sol-buy" {:title "Buy"})]
     ["/thanks" :sol-thanks (page/page "sol-thanks" {:title "Thank You"})]
     ["/confirm" :sol-confirm (page/page "sol-confirm" {:title "Thanks!"})]
-    ["/charge" :sol-charge {:POST #'charge-handler}]]])
+    ["/charge" :sol-charge {:POST (fn [request]
+                                    (#'charge-handler (:mongo config) request))}]]])
 
 (defn minimum-level
   [printing freight shipping pledge]
