@@ -147,9 +147,10 @@
        :headers {"Content-Type" "application/json"}
        :body (json/generate-string out)})
     (catch Exception e
+      (.printStackTrace e)
       {:status 200
        :headers {"Content-Type" "application/json"}
-       :body (json/generate-string {:error (str e)})})))
+       :body (json/generate-string {:error (str (mapv str (.getStackTrace e)))})})))
 
 (defn sol-routes
   [config]
