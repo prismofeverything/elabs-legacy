@@ -8,8 +8,6 @@
    [cheshire.core :as json]
    [manifold.deferred :as defer]
    [clj-http.client :as http]
-   ;; [aleph.http :as http]
-   [aleph.http.server :as server]
    [antlers.core :as antlers]
    [polaris.core :as polaris]
    [taoensso.timbre :as log]
@@ -28,6 +26,8 @@
    {:secret (System/getenv "STRIPE_LIVE_SECRET")
     :public (System/getenv "STRIPE_LIVE_PUBLIC")}})
 
+(def STRIPE_ENV :live)
+
 (defn charge!
   [secret token amount]
   (when (and secret token amount)
@@ -43,25 +43,6 @@
           :source token}})
       (catch Exception e
         (log/error e)))))
-
-;; (defn charge!
-;;   [secret token amount]
-;;   (when (and secret token amount)
-;;     (log/info secret token amount)
-;;     (try
-;;       @(defer/chain
-;;          (http/post
-;;           "https://api.stripe.com/v1/charges"
-;;           {:basic-auth [secret ""]
-;;            :form-params
-;;            {:amount amount
-;;             :currency "usd"
-;;             :description "Preorder for Sol: Last Days of a Star"
-;;             :source token}})
-;;          :body
-;;          bytes/to-string)
-;;       (catch Exception e
-;;         ()))))
 
 (defn extract-person
   [params response]
@@ -139,29 +120,36 @@
   [request]
   {:status 200
    :headers {"Content-Type" "application/json"}
-   :body (json/generate-string shipping/shipping-matrix)})
+   :body (json/generate-string
+          (assoc
+           shipping/shipping-matrix
+           :stripe-public-key (get-in stripe [STRIPE_ENV :public])))})
 
 (defn charge-handler
   [db request]
   (log/info db)
-  (let [body (bytes/to-string (:body request))
-        flat (codec/form-decode body "UTF-8")
-        params (embed-keys flat)
-        _ (log/info params)
-        ;; secret (get-in stripe [:test :secret])
-        secret (get-in stripe [:live :secret])
-        token (get-in params [:token :id])
-        shipping-cost (calculate-shipping (:shipping params))
-        total-cost (+ base-game-cost shipping-cost)
-        raw (charge! secret token total-cost)
-        response (json/parse-string (:body raw) true)
-        _ (log/info response)
-        out {:url "/sol/confirm" :name (get-in response [:source :name])}]
-    (store-charge! db token total-cost params response)
-    (email-confirmation! (assoc params :total-cost total-cost))
-    {:status 200
-     :headers {"Content-Type" "application/json"}
-     :body (json/generate-string out)}))
+  (try
+    (let [body (bytes/to-string (:body request))
+          flat (codec/form-decode body "UTF-8")
+          params (embed-keys flat)
+          _ (log/info params)
+          secret (get-in stripe [STRIPE_ENV :secret])
+          token (get-in params [:token :id])
+          shipping-cost (calculate-shipping (:shipping params))
+          total-cost (+ base-game-cost shipping-cost)
+          raw (charge! secret token total-cost)
+          response (json/parse-string (:body raw) true)
+          _ (log/info response)
+          out {:url "/sol/confirm" :name (get-in response [:source :name])}]
+      (store-charge! db token total-cost params response)
+      (email-confirmation! (assoc params :total-cost total-cost))
+      {:status 200
+       :headers {"Content-Type" "application/json"}
+       :body (json/generate-string out)})
+    (catch Exception e
+      {:status 200
+       :headers {"Content-Type" "application/json"}
+       :body (json/generate-string {:error (str e)})})))
 
 (defn sol-routes
   [config]

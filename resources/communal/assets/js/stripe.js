@@ -270,8 +270,9 @@ function elephantLaboratories() {
     })
   }
 
-  function loadStripe() {
-    var stripe = Stripe('pk_live_8YlLVCbeX9XARmxmlCd1pbVe');
+  function loadStripe(matrix) {
+    // 'pk_live_8YlLVCbeX9XARmxmlCd1pbVe'
+    var stripe = Stripe(matrix['stripe-public-key']);
     var elements = stripe.elements();
 
     ////-------------- STYLES FOR CREDIT CARD INPUT GO HERE
@@ -305,9 +306,14 @@ function elephantLaboratories() {
         if (result.token) {
           details.token = result.token
           $.post('/sol/charge', details, function(data) {
-            $('#success').show();
-            $('#buy-sol').hide();
-            $('#thank-you-name').text(data.name);
+            if (data.error) {
+              $('#error').show();
+              console.log(data.error);
+            } else {
+              $('#success').show();
+              $('#buy-sol').hide();
+              $('#thank-you-name').text(data.name);
+            }
           });
         } else if (result.error) {
           $('.error').text(result.error.message);
@@ -389,16 +395,7 @@ function elephantLaboratories() {
   function loadShipping(matrix) {
     $('#shipping-country').on('change', function(event) {
       var country = event.target.value;
-      // var tier = Object.keys(matrix['tiers']).filter(function(tier) {
-      //   var index = matrix['tiers'][tier].set.indexOf(country) > -1;
-      //   return index;
-      // });
-
-      // var cost = tier.length > 0 ? matrix['tiers'][tier[0]].cost : matrix['rest-of-the-world'];
       setTotal(matrix, country)
-      // state.shipping = calculateShipping(matrix, country);
-      // $('#sol-shipping').text('$' + state.shipping)
-      // $('#sol-total').text('$' + (state.base + state.shipping))
     });
   }
 
@@ -413,7 +410,7 @@ function elephantLaboratories() {
   }
   
   function loadEverything(matrix) {
-    loadStripe();
+    loadStripe(matrix);
     loadShipping(matrix);
     loadBilling();
   }
