@@ -271,7 +271,7 @@ function elephantLaboratories() {
   }
 
   function loadStripe() {
-    var stripe = Stripe('pk_test_01lVNaphdSv8xosyLvSm5ckt');
+    var stripe = Stripe('pk_live_8YlLVCbeX9XARmxmlCd1pbVe');
     var elements = stripe.elements();
 
     ////-------------- STYLES FOR CREDIT CARD INPUT GO HERE
