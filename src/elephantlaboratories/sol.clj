@@ -154,8 +154,8 @@
         shipping-cost (calculate-shipping (:shipping params))
         total-cost (+ base-game-cost shipping-cost)
         raw (charge! secret token total-cost)
-        _ (log/info response)
         response (json/parse-string (:body raw) true)
+        _ (log/info response)
         out {:url "/sol/confirm" :name (get-in response [:source :name])}]
     (store-charge! db token total-cost params response)
     (email-confirmation! (assoc params :total-cost total-cost))
