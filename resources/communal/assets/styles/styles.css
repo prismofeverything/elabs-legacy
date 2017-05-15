@@ -1724,11 +1724,6 @@ input.subscribe__submit--ele {
     .smallest-hide-inline {
       display: inline; } }
 
-#error {
-      clear: both;
-      float: right;
-}
-
 .error {
     color: #f00;
 }
