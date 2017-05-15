@@ -38,7 +38,7 @@
          :form-params
          {:amount amount
           :currency "usd"
-          :description "test!"
+          :description "Preorder for Sol: Last Days of a Star"
           :source token}})
        :body
        bytes/to-string)))
@@ -93,18 +93,20 @@
               "Dear " name ",\n"
               "Thank you for your order of Sol: Last Days of a Star!\n"
               "Your total with the game and shipping together comes to "
-              total-cost ".\n"
-              "We will ship it to this address:\n"
+              total-cost " USD.\n"
+              "Shipping for retail pre-orders begins in August, 2017.\n"
+              "We will ship it to this address:\n\n"
               (:address1 shipping) "\n"
               (:address2 shipping) "\n"
               (:city shipping) "\n"
               (:state shipping) "\n"
               (:country shipping) "\n"
-              (:zip shipping) "\n"
-              "Let us know if you have any questions!\n"
+              (:zip shipping) "\n\n"
+              "Let us know if you have any questions! (you can reply directly to this email)\n\n"
               "With great gratitude,\n"
               "Elephant Laboratories\n"
-              "Ryan, Sean and Jodi")]
+              "Ryan, Sean and Jodi\n\n"
+              "<a href=\"http://elephantlaboratories.com\">http://elephantlaboratories.com</a>")]
     (postal/send-email!
      {:to to
       :subject subject
