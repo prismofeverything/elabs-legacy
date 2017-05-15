@@ -97,17 +97,17 @@
               "Shipping for retail pre-orders begins in August, 2017.\n"
               "We will ship it to this address:\n\n"
               (:address1 shipping) "\n"
-              (if (:address2 shipping)
+              (if-not (empty? (:address2 shipping))
                 (str (:address2 shipping) "\n"))
-              (:city shipping) "\n"
-              (:state shipping) "\n"
-              (:country shipping) "\n"
-              (:zip shipping) "\n\n"
+              "City: " (:city shipping) "\n"
+              "State: " (:state shipping) "\n"
+              "Country: " (:country shipping) "\n"
+              "ZIP: " (:zip shipping) "\n\n"
               "Let us know if you have any questions! (you can reply directly to this email)\n\n"
               "With great gratitude,\n"
               "Elephant Laboratories\n"
               "Ryan, Sean and Jodi\n\n"
-              "http://elephantlaboratories.com")]
+              "https://elephantlaboratories.com")]
     (postal/send-email!
      {:to to
       :subject subject
