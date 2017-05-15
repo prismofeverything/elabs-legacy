@@ -310,6 +310,7 @@ function elephantLaboratories() {
               $('#error').show();
               console.log(data.error);
             } else {
+              $('#error').hide()
               $('#success').show();
               $('#buy-sol').hide();
               $('#thank-you-name').text(data.name);
