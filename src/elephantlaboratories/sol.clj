@@ -37,7 +37,7 @@
         "https://api.stripe.com/v1/charges"
         {:basic-auth [secret ""]
          :form-params
-         {:amount amount
+         {:amount (* amount 100)
           :currency "usd"
           :description "Preorder for Sol: Last Days of a Star"
           :source token}})
@@ -153,9 +153,9 @@
         token (get-in params [:token :id])
         shipping-cost (calculate-shipping (:shipping params))
         total-cost (+ base-game-cost shipping-cost)
-        response (charge! secret token total-cost)
+        raw (charge! secret token total-cost)
         _ (log/info response)
-        ;; response (json/parse-string raw true)
+        response (json/parse-string (:body raw) true)
         out {:url "/sol/confirm" :name (get-in response [:source :name])}]
     (store-charge! db token total-cost params response)
     (email-confirmation! (assoc params :total-cost total-cost))
