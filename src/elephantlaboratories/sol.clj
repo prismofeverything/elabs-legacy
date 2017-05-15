@@ -7,7 +7,8 @@
    [byte-streams :as bytes]
    [cheshire.core :as json]
    [manifold.deferred :as defer]
-   [aleph.http :as http]
+   [clj-http.client :as http]
+   ;; [aleph.http :as http]
    [aleph.http.server :as server]
    [antlers.core :as antlers]
    [polaris.core :as polaris]
@@ -31,8 +32,8 @@
   [secret token amount]
   (when (and secret token amount)
     (log/info secret token amount)
-    @(defer/chain
-       (http/post
+    (try
+      (http/post
         "https://api.stripe.com/v1/charges"
         {:basic-auth [secret ""]
          :form-params
@@ -40,8 +41,27 @@
           :currency "usd"
           :description "Preorder for Sol: Last Days of a Star"
           :source token}})
-       :body
-       bytes/to-string)))
+      (catch Exception e
+        (log/error e)))))
+
+;; (defn charge!
+;;   [secret token amount]
+;;   (when (and secret token amount)
+;;     (log/info secret token amount)
+;;     (try
+;;       @(defer/chain
+;;          (http/post
+;;           "https://api.stripe.com/v1/charges"
+;;           {:basic-auth [secret ""]
+;;            :form-params
+;;            {:amount amount
+;;             :currency "usd"
+;;             :description "Preorder for Sol: Last Days of a Star"
+;;             :source token}})
+;;          :body
+;;          bytes/to-string)
+;;       (catch Exception e
+;;         ()))))
 
 (defn extract-person
   [params response]
@@ -128,12 +148,14 @@
         flat (codec/form-decode body "UTF-8")
         params (embed-keys flat)
         _ (log/info params)
-        secret (get-in stripe [:live :secret])
+        secret (get-in stripe [:test :secret])
+        ;; secret (get-in stripe [:live :secret])
         token (get-in params [:token :id])
         shipping-cost (calculate-shipping (:shipping params))
         total-cost (+ base-game-cost shipping-cost)
-        raw (charge! secret token total-cost)
-        response (json/parse-string raw true)
+        response (charge! secret token total-cost)
+        _ (log/info response)
+        ;; response (json/parse-string raw true)
         out {:url "/sol/confirm" :name (get-in response [:source :name])}]
     (store-charge! db token total-cost params response)
     (email-confirmation! (assoc params :total-cost total-cost))

@@ -6,6 +6,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/java.jdbc "0.7.0-alpha3"]
                  [org.postgresql/postgresql "9.4.1212"]
+                 [clj-http "3.5.0"]
                  [cheshire "5.7.1"]
                  [polaris "0.0.17"]
                  [aleph "0.4.3"]
