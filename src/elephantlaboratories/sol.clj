@@ -128,7 +128,7 @@
         flat (codec/form-decode body "UTF-8")
         params (embed-keys flat)
         _ (log/info params)
-        secret (get-in stripe [:test :secret])
+        secret (get-in stripe [:live :secret])
         token (get-in params [:token :id])
         shipping-cost (calculate-shipping (:shipping params))
         total-cost (+ base-game-cost shipping-cost)

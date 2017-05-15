@@ -81,7 +81,7 @@
 
 (defn start
   [config]
-  (let [mongo (mongo/connect! {:database "sol-last-days-of-a-star"})]
+  (let [mongo (mongo/connect! {:database "elephant-laboratories"})]
     (http/start-server
      (app (base-routes {:mongo mongo}))
      {:port (or (:port config) 21112)})))
