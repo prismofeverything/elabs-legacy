@@ -162,6 +162,7 @@
     ["/background" :sol-background (page/page "sol-background" {:title "Media"})]
     ["/matrix" :sol-matrix {:GET #'load-matrix}]
     ["/buy" :sol-buy (page/page "sol-buy" {:title "Buy"})]
+    ["/game" :sol-game (fn [request] {:status 302 :headers {"Location" "/sol"} :body ""})]
     ["/thanks" :sol-thanks (page/page "sol-thanks" {:title "Thank You"})]
     ["/confirm" :sol-confirm (page/page "sol-confirm" {:title "Thanks!"})]
     ["/charge" :sol-charge {:POST (fn [request]
