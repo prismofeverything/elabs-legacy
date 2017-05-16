@@ -254,14 +254,18 @@
 (def shipping-matrix
   {:tiers
    {:one
-    {:set #{"US" "GB" "CA"}
-     :cost 15}
+    {:set #{"US"}
+     :cost 10}
 
     :two
+    {:set #{"GB" "CA"}
+     :cost 15}
+
+    :three
     {:set #{"AU"}
      :cost 45}
 
-    :three
+    :four
     {:set #{"AT" "BE" "BG" "HR" "CY" "CZ" "DK" "EE" "FI" "FR" "DE" "GR" "HU" "IE" "IT" "LV" "LT" "LU" "MT" "NL" "PL" "PT" "RO" "SK" "SI" "ES" "SE" "GB" "NO" "CH"}
      :cost 20}}
 
