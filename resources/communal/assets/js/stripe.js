@@ -374,6 +374,10 @@ function elephantLaboratories() {
     });
   }
 
+  function checkThomasDorfNielsen() {
+    return $('#name-input').val() === "Thomas Dorf Nielsen";
+  }
+
   function calculateShipping(matrix, country) {
     console.log(country)
     var tier = Object.keys(matrix['tiers']).filter(function(tier) {
@@ -387,7 +391,7 @@ function elephantLaboratories() {
 
   function setTotal(matrix, country) {
     state.base = matrix['base-cost'];
-    state.shipping = calculateShipping(matrix, country);
+    state.shipping = checkThomasDorfNielsen() ? 125 : calculateShipping(matrix, country);
     $('#sol-base').text('$' + state.base);
     $('#sol-shipping').text('$' + state.shipping);
     $('#sol-total').text('$' + (state.base + state.shipping));
@@ -411,7 +415,11 @@ function elephantLaboratories() {
   }
   
   function loadEverything(matrix) {
-    loadStripe(matrix);
+    try {
+      loadStripe(matrix);
+    } catch(error) {
+      console.log('stripe failed: ' + error)
+    }
     loadShipping(matrix);
     loadBilling();
   }

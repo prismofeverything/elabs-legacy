@@ -137,7 +137,9 @@
               (throw (Exception. "no email provided")))
           secret (get-in stripe [STRIPE_ENV :secret])
           token (get-in params [:token :id])
-          shipping-cost (calculate-shipping (:shipping params))
+          shipping-cost (if (= (:name params) "Thomas Dorf Nielsen")
+                          125
+                          (calculate-shipping (:shipping params)))
           total-cost (+ base-game-cost shipping-cost)
           raw (charge! secret token total-cost)
           response (json/parse-string (:body raw) true)
