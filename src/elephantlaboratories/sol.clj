@@ -4,19 +4,20 @@
    [clojure.string :as string]
    [clojure.pprint :as pprint]
    [clojure.java.jdbc :as j]
-   [byte-streams :as bytes]
-   [cheshire.core :as json]
-   [manifold.deferred :as defer]
-   [clj-http.client :as http]
-   [antlers.core :as antlers]
-   [polaris.core :as polaris]
    [taoensso.timbre :as log]
+   [cheshire.core :as json]
+   [clj-http.client :as http]
    [ring.util.codec :as codec]
    [ring.util.response :as response]
+   [byte-streams :as bytes]
+   [manifold.deferred :as defer]
+   [antlers.core :as antlers]
+   [polaris.core :as polaris]
    [elephantlaboratories.page :as page]
    [elephantlaboratories.mongo :as db]
    [elephantlaboratories.postal :as postal]
-   [elephantlaboratories.shipping :as shipping]))
+   [elephantlaboratories.shipping :as shipping]
+   [elephantlaboratories.inventory :as inventory]))
 
 (def stripe
   {:test
@@ -117,13 +118,16 @@
 (def base-game-cost 60)
 
 (defn load-matrix
-  [request]
-  {:status 200
-   :headers {"Content-Type" "application/json"}
-   :body (json/generate-string
-          (assoc
-           shipping/shipping-matrix
-           :stripe-public-key (get-in stripe [STRIPE_ENV :public])))})
+  [db request]
+  (let [inventory (inventory/all-inventory db)
+        available? (inventory/available? inventory :sol)]
+    {:status 200
+     :headers {"Content-Type" "application/json"}
+     :body (json/generate-string
+            (assoc
+             shipping/shipping-matrix
+             :stripe-public-key (get-in stripe [STRIPE_ENV :public])
+             :inventory available?))}))
 
 (defn charge-handler
   [db request]
@@ -162,7 +166,8 @@
    [["/story" :sol-play (page/page "sol-play" {:title "Gameplay"})]
     ["/worlds" :sol-new-worlds (page/page "sol-worlds" {:title "Mythos"})]
     ["/background" :sol-background (page/page "sol-background" {:title "Media"})]
-    ["/matrix" :sol-matrix {:GET #'load-matrix}]
+    ["/matrix" :sol-matrix {:GET (fn [request]
+                                   (#'load-matrix (:mongo config) request))}]
     ["/buy" :sol-buy (page/page "sol-buy" {:title "Buy"})]
     ["/game" :sol-game (fn [request] {:status 302 :headers {"Location" "/sol"} :body ""})]
     ["/thanks" :sol-thanks (page/page "sol-thanks" {:title "Thank You"})]

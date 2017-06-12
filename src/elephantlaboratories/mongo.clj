@@ -11,16 +11,24 @@
     (db/get-db connection (:database config))))
 
 (defn insert!
-  [db where what]
-  (mongo/insert db where what))
+  [db collection what]
+  (mongo/insert db collection what))
 
 (defn find
-  [db where id]
-  (mongo/find-one-as-map db where {:_id (ObjectId. id)}))
+  [db collection id]
+  (mongo/find-one-as-map db collection {:_id (ObjectId. id)}))
+
+(defn query
+  [db collection where]
+  (mongo/find-maps db collection where))
+
+(defn update
+  [db collection where values]
+  (mongo/update db collection where values {:upsert true}))
 
 (defn find-all
-  [db where]
-  (mongo/find-maps db where))
+  [db collection]
+  (mongo/find-maps db collection))
 
 (defn timestamp
   [record]
