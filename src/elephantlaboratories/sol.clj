@@ -27,7 +27,7 @@
    {:secret (System/getenv "STRIPE_LIVE_SECRET")
     :public (System/getenv "STRIPE_LIVE_PUBLIC")}})
 
-(def STRIPE_ENV :live)
+(def STRIPE_ENV :test)
 
 (defn charge!
   [secret token amount]

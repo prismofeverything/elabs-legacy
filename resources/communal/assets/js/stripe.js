@@ -309,17 +309,18 @@ function elephantLaboratories() {
       return function(result) {
         if (result.token) {
           details.token = result.token
-          $.post('/sol/charge', details, function(data) {
-            if (data.error) {
-              $('#error').show();
-              console.log(data.error);
-            } else {
-              $('#error').hide()
-              $('#success').show();
-              $('#buy-sol').hide();
-              $('#thank-you-name').text(data.name);
-            }
-          });
+          $('#confirmation').text('success!')
+          // $.post('/sol/charge', details, function(data) {
+          //   if (data.error) {
+          //     $('#error').show();
+          //     console.log(data.error);
+          //   } else {
+          //     $('#error').hide()
+          //     $('#success').show();
+          //     $('#buy-sol').hide();
+          //     $('#thank-you-name').text(data.name);
+          //   }
+          // });
         } else if (result.error) {
           $('.error').text(result.error.message);
           $('.error').show();
@@ -379,7 +380,8 @@ function elephantLaboratories() {
   }
 
   function checkThomasDorfNielsen() {
-    return $('#name-input').val() === "Thomas Dorf Nielsen";
+    return false;
+    // return $('#name-input').val() === "Thomas Dorf Nielsen";
   }
 
   function calculateShipping(matrix, country) {
