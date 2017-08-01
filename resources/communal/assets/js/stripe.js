@@ -310,17 +310,17 @@ function elephantLaboratories() {
         if (result.token) {
           details.token = result.token
           $('#confirmation').text('success!')
-          // $.post('/sol/charge', details, function(data) {
-          //   if (data.error) {
-          //     $('#error').show();
-          //     console.log(data.error);
-          //   } else {
-          //     $('#error').hide()
-          //     $('#success').show();
-          //     $('#buy-sol').hide();
-          //     $('#thank-you-name').text(data.name);
-          //   }
-          // });
+          $.post('/sol/charge', details, function(data) {
+            if (data.error) {
+              $('#error').show();
+              console.log(data.error);
+            } else {
+              $('#error').hide()
+              $('#success').show();
+              $('#buy-sol').hide();
+              $('#thank-you-name').text(data.name);
+            }
+          });
         } else if (result.error) {
           $('.error').text(result.error.message);
           $('.error').show();
