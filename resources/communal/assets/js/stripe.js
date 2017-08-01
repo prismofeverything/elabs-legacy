@@ -333,49 +333,52 @@ function elephantLaboratories() {
     });
 
     document.querySelector('form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var form = document.querySelector('form');
-      var details = {
-        name: form.querySelector('input[name=name]').value,
-        phone: form.querySelector('input[name=phone]').value,
-        email: form.querySelector('input[name=email]').value,
-        shipping: {
+      if (!state.submittedAlready) {
+        state.submittedAlready = true;
+        e.preventDefault();
+        var form = document.querySelector('form');
+        var details = {
           name: form.querySelector('input[name=name]').value,
-          address1: form.querySelector('input[name=shipping-street1]').value,
-          address2: form.querySelector('input[name=shipping-street2]').value,
-          city: form.querySelector('input[name=shipping-city]').value,
-          state: form.querySelector('input[name=shipping-state]').value,
-          zip: form.querySelector('input[name=shipping-zip]').value,
-          country: form.querySelector('select[name=shipping-country]').value
-        },
-        billing: {
-          name: form.querySelector('input[name=name]').value,
-          address1: form.querySelector('input[name=billing-street1]').value,
-          address2: form.querySelector('input[name=billing-street2]').value,
-          city: form.querySelector('input[name=billing-city]').value,
-          state: form.querySelector('input[name=billing-state]').value,
-          zip: form.querySelector('input[name=billing-zip]').value,
-          country: form.querySelector('select[name=billing-country]').value
+          phone: form.querySelector('input[name=phone]').value,
+          email: form.querySelector('input[name=email]').value,
+          shipping: {
+            name: form.querySelector('input[name=name]').value,
+            address1: form.querySelector('input[name=shipping-street1]').value,
+            address2: form.querySelector('input[name=shipping-street2]').value,
+            city: form.querySelector('input[name=shipping-city]').value,
+            state: form.querySelector('input[name=shipping-state]').value,
+            zip: form.querySelector('input[name=shipping-zip]').value,
+            country: form.querySelector('select[name=shipping-country]').value
+          },
+          billing: {
+            name: form.querySelector('input[name=name]').value,
+            address1: form.querySelector('input[name=billing-street1]').value,
+            address2: form.querySelector('input[name=billing-street2]').value,
+            city: form.querySelector('input[name=billing-city]').value,
+            state: form.querySelector('input[name=billing-state]').value,
+            zip: form.querySelector('input[name=billing-zip]').value,
+            country: form.querySelector('select[name=billing-country]').value
+          }
         }
+
+        var shippingBillingSame = form.querySelector('input[name=billing-address]').value === 'same';
+        if (shippingBillingSame) {
+          details.billing = details.shipping;
+        }
+
+        var stripeDetails = {
+          name: details.name,
+          phone: details.phone,
+          address_line1: details.billing.address1,
+          address_line2: details.billing.address2,
+          address_city: details.billing.city,
+          address_state: details.billing.state,
+          address_zip: details.billing.zip,
+          address_country: details.billing.country,
+        };
+
+        stripe.createToken(card, stripeDetails).then(setOutcome(details));
       }
-
-      var shippingBillingSame = form.querySelector('input[name=billing-address]').value === 'same';
-      if (shippingBillingSame) {
-        details.billing = details.shipping;
-      }
-
-      var stripeDetails = {
-        name: details.name,
-        phone: details.phone,
-        address_line1: details.billing.address1,
-        address_line2: details.billing.address2,
-        address_city: details.billing.city,
-        address_state: details.billing.state,
-        address_zip: details.billing.zip,
-        address_country: details.billing.country,
-      };
-
-      stripe.createToken(card, stripeDetails).then(setOutcome(details));
     });
   }
 
@@ -395,9 +398,16 @@ function elephantLaboratories() {
     return cost;
   }
 
-  function setTotal(matrix, country) {
-    state.base = matrix['base-cost'];
-    state.shipping = checkThomasDorfNielsen() ? 125 : calculateShipping(matrix, country);
+  function setTotal(matrix, country, code) {
+    if (code && matrix.codes[code]) {
+      state.base = matrix.codes[code]
+      state.shipping = 0
+      state.code = code
+    } else {
+      state.base = matrix['base-cost'];
+      state.shipping = checkThomasDorfNielsen() ? 125 : calculateShipping(matrix, country);
+    }
+
     $('#sol-base').text('$' + state.base);
     $('#sol-shipping').text('$' + state.shipping);
     $('#sol-total').text('$' + (state.base + state.shipping));
@@ -406,8 +416,18 @@ function elephantLaboratories() {
   function loadShipping(matrix) {
     $('#shipping-country').on('change', function(event) {
       var country = event.target.value;
-      setTotal(matrix, country)
+      if (!state.code) {
+        setTotal(matrix, country, null)
+      }
     });
+
+    $('#codes').on('change', function(event) {
+      var code = event.target.value;
+      console.log(code)
+      if (matrix.codes[code]) {
+        setTotal(matrix, null, code)
+      }
+    })
   }
 
   function loadBilling() {

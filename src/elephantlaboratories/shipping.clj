@@ -1,4 +1,6 @@
-(ns elephantlaboratories.shipping)
+(ns elephantlaboratories.shipping
+  (:require
+   [elephantlaboratories.config :as config]))
 
 (def country-codes
   {"AF" "Afghanistan"
@@ -251,23 +253,31 @@
    "ZM" "Zambia"
    "ZW" "Zimbabwe"})
 
+(defn read-codes
+  []
+  "of the form {:code $price}"
+  (let [path (or (System/getenv "CODES_PATH") "config/codes.clj")]
+    (config/read-config path)))
+
+(def tiers
+  {:one
+   {:set #{"US"}
+    :cost 10}
+
+   :two
+   {:set #{"GB" "CA"}
+    :cost 15}
+
+   :three
+   {:set #{"AU"}
+    :cost 45}
+
+   :four
+   {:set #{"AT" "BE" "BG" "HR" "CY" "CZ" "DK" "EE" "FI" "FR" "DE" "GR" "HU" "IE" "IT" "LV" "LT" "LU" "MT" "NL" "PL" "PT" "RO" "SK" "SI" "ES" "SE" "GB" "NO" "CH"}
+    :cost 20}})
+
 (def shipping-matrix
-  {:tiers
-   {:one
-    {:set #{"US"}
-     :cost 10}
-
-    :two
-    {:set #{"GB" "CA"}
-     :cost 15}
-
-    :three
-    {:set #{"AU"}
-     :cost 45}
-
-    :four
-    {:set #{"AT" "BE" "BG" "HR" "CY" "CZ" "DK" "EE" "FI" "FR" "DE" "GR" "HU" "IE" "IT" "LV" "LT" "LU" "MT" "NL" "PL" "PT" "RO" "SK" "SI" "ES" "SE" "GB" "NO" "CH"}
-     :cost 20}}
-
+  {:tiers tiers
+   :codes (read-codes)
    :base-cost 60
    :rest-of-the-world 50})

@@ -129,6 +129,12 @@
              :stripe-public-key (get-in stripe [STRIPE_ENV :public])
              :inventory available?))}))
 
+(defn find-code
+  [code]
+  (get-in
+   shipping/shipping-matrix
+   [:codes code]))
+
 (defn charge-handler
   [db request]
   (log/info db)
@@ -144,7 +150,10 @@
           shipping-cost (if (= (:name params) "Thomas Dorf Nielsen")
                           125
                           (calculate-shipping (:shipping params)))
-          total-cost (+ base-game-cost shipping-cost)
+          base-cost (if-let [code (find-code (:code params))]
+                      code
+                      base-game-cost)
+          total-cost (+ base-cost shipping-cost)
           raw (charge! secret token total-cost)
           response (json/parse-string (:body raw) true)
           _ (log/info response)
