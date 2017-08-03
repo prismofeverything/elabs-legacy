@@ -12,6 +12,7 @@
                  [aleph "0.4.3"]
                  [com.taoensso/timbre "4.10.0"]
                  [ring "1.6.0-RC3"]
+                 [org.clojure/data.csv "0.1.4"]
                  [com.novemberain/monger "3.1.0"]
                  [com.draines/postal "2.0.2"]
                  ;; [http-kit "2.1.12"]
