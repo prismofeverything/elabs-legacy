@@ -57,10 +57,23 @@
   [order m]
   (map (partial get m) order))
 
+(def funagain-header
+  ["name"
+   "name"
+   "company"
+   "address1"
+   "address2"
+   "city"
+   "state"
+   "zip"
+   "country"
+   "email"
+   "phone"])
+
 (defn maps->rows
   ([maps] (maps->rows maps (keys (first maps))))
   ([maps order]
-   (let [header (map name order)
+   (let [header funagain-header ;; (map name order)
          lines (map (partial extract order) maps)]
      (cons header lines))))
 
@@ -71,3 +84,7 @@
          writer (java.io.StringWriter.)
          csv (csv/write-csv writer data)]
      (.toString writer))))
+
+(defn mark-shipped
+  [db]
+  (db/update db :charges {} {:$set {:shipped true}}))
