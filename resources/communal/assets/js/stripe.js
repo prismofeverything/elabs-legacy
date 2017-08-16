@@ -336,34 +336,36 @@ function elephantLaboratories() {
       if (!state.submittedAlready) {
         state.submittedAlready = true;
         e.preventDefault();
-        var form = document.querySelector('form');
         var details = {
-          name: form.querySelector('input[name=name]').value,
-          phone: form.querySelector('input[name=phone]').value,
-          email: form.querySelector('input[name=email]').value,
+          name: $('#name').val(),
+          phone: $('#phone').val(),
+          email: $('#email').val(),
+          code: $('#code').val(),
           shipping: {
-            name: form.querySelector('input[name=name]').value,
-            address1: form.querySelector('input[name=shipping-street1]').value,
-            address2: form.querySelector('input[name=shipping-street2]').value,
-            city: form.querySelector('input[name=shipping-city]').value,
-            state: form.querySelector('input[name=shipping-state]').value,
-            zip: form.querySelector('input[name=shipping-zip]').value,
-            country: form.querySelector('select[name=shipping-country]').value
+            name: $('#name').val(),
+            address1: $('#shipping-street1').val(),
+            address2: $('#shipping-street2').val(),
+            city: $('#shipping-city').val(),
+            state: $('#shipping-state').val(),
+            zip: $('#shipping-zip').val(),
+            country: $('#shipping-country').val()
           },
           billing: {
-            name: form.querySelector('input[name=name]').value,
-            address1: form.querySelector('input[name=billing-street1]').value,
-            address2: form.querySelector('input[name=billing-street2]').value,
-            city: form.querySelector('input[name=billing-city]').value,
-            state: form.querySelector('input[name=billing-state]').value,
-            zip: form.querySelector('input[name=billing-zip]').value,
-            country: form.querySelector('select[name=billing-country]').value
+            name: $('#name').val(),
+            address1: $('#billing-street1').val(),
+            address2: $('#billing-street2').val(),
+            city: $('#billing-city').val(),
+            state: $('#billing-state').val(),
+            zip: $('#billing-zip').val(),
+            country: $('#billing-country').val()
           }
         }
 
-        var shippingBillingSame = form.querySelector('input[name=billing-address]').value === 'same';
+        var shippingBillingSame = $('input[name=billing-address]:checked').val() === 'same'
+        console.log(shippingBillingSame)
         if (shippingBillingSame) {
           details.billing = details.shipping;
+          console.log(details)
         }
 
         var stripeDetails = {
@@ -421,7 +423,7 @@ function elephantLaboratories() {
       }
     });
 
-    $('#codes').on('change', function(event) {
+    $('#code').on('change', function(event) {
       var code = event.target.value;
       console.log(code)
       if (matrix.codes[code]) {

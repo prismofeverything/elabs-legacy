@@ -22,55 +22,55 @@
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
                   <span class="buy__inputgroup__label__desc">Name</span>
-                  <input id="name-input" name="name" class="field buy__inputgroup__input--text"  />
+                  <input id="name" name="name" class="field buy__inputgroup__input--text"  />
                 </label>
               </div>
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
                   <span class="buy__inputgroup__label__desc">Email</span>
-                  <input id="email-input" name="email" class="field buy__inputgroup__input--text"  />
+                  <input id="email" name="email" class="field buy__inputgroup__input--text"  />
                 </label>
               </div>
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
                   <span class="buy__inputgroup__label__desc">Phone</span>
-                  <input id="phone-input" name="phone" class="field buy__inputgroup__input--text"  type="tel" />
+                  <input id="phone" name="phone" class="field buy__inputgroup__input--text"  type="tel" />
                 </label>
               </div>
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
                   <span class="buy__inputgroup__label__desc">Address Line 1</span>
-                  <input name="shipping-street1" class="field buy__inputgroup__input--text"  />
+                  <input id="shipping-street1" class="field buy__inputgroup__input--text"  />
                 </label>
               </div>
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
                   <span class="buy__inputgroup__label__desc">Address Line 2</span>
-                  <input name="shipping-street2" class="field buy__inputgroup__input--text"  />
+                  <input id="shipping-street2" class="field buy__inputgroup__input--text"  />
                 </label>
               </div>
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
                   <span class="buy__inputgroup__label__desc">City</span>
-                  <input name="shipping-city" class="field buy__inputgroup__input--text"  />
+                  <input id="shipping-city" class="field buy__inputgroup__input--text"  />
                 </label>
               </div>
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
                   <span class="buy__inputgroup__label__desc">State</span>
-                  <input name="shipping-state" class="field buy__inputgroup__input--text"  />
+                  <input id="shipping-state" class="field buy__inputgroup__input--text"  />
                 </label>
               </div>
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
                   <span class="buy__inputgroup__label__desc">Zip</span>
-                  <input name="shipping-zip" class="field buy__inputgroup__input--text"  />
+                  <input id="shipping-zip" class="field buy__inputgroup__input--text"  />
                 </label>
               </div>
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
                   <span class="buy__inputgroup__label__desc">Country</span>
-                  <select id="shipping-country" name="shipping-country" class="buy__select">
+                  <select id="shipping-country" id="shipping-country" class="buy__select">
                     <option value="AF">Afghanistan</option>
                     <option value="AX">Åland Islands</option>
                     <option value="AL">Albania</option>
@@ -328,7 +328,7 @@
               <legend class="h3">Billing Address</legend>
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
-                  <input id="billing-same" type="radio" name="billing-address" value="same"> My billing address is the same as my shipping address.
+                  <input id="billing-same" checked type="radio" name="billing-address" value="same"> My billing address is the same as my shipping address.
                 </label>
               </div>
               <div class="buy__inputgroup">
@@ -340,7 +340,7 @@
                 <div class="buy__inputgroup">
                   <label class="buy__inputgroup__label">
                     <span class="buy__inputgroup__label__desc">Name</span>
-                    <input id="name-input" name="billing-name" class="field buy__inputgroup__input--text"  />
+                    <input id="billing-name" class="field buy__inputgroup__input--text"  />
                   </label>
                 </div>
                 <!-- <div class="buy__inputgroup"> -->
@@ -358,37 +358,37 @@
                 <div class="buy__inputgroup">
                   <label class="buy__inputgroup__label">
                     <span class="buy__inputgroup__label__desc">Address Line 1</span>
-                    <input name="billing-street1" class="field buy__inputgroup__input--text"  />
+                    <input id="billing-street1" class="field buy__inputgroup__input--text"  />
                   </label>
                 </div>
                 <div class="buy__inputgroup">
                   <label class="buy__inputgroup__label">
                     <span class="buy__inputgroup__label__desc">Address Line 2</span>
-                    <input name="billing-street2" class="field buy__inputgroup__input--text"  />
+                    <input id="billing-street2" class="field buy__inputgroup__input--text"  />
                   </label>
                 </div>
                 <div class="buy__inputgroup">
                   <label class="buy__inputgroup__label">
                     <span class="buy__inputgroup__label__desc">City</span>
-                    <input name="billing-city" class="field buy__inputgroup__input--text"  />
+                    <input id="billing-city" class="field buy__inputgroup__input--text"  />
                   </label>
                 </div>
                 <div class="buy__inputgroup">
                   <label class="buy__inputgroup__label">
                     <span class="buy__inputgroup__label__desc">State</span>
-                    <input name="billing-state" class="field buy__inputgroup__input--text"  />
+                    <input id="billing-state" class="field buy__inputgroup__input--text"  />
                   </label>
                 </div>
                 <div class="buy__inputgroup">
                   <label class="buy__inputgroup__label">
                     <span class="buy__inputgroup__label__desc">Zip</span>
-                    <input name="billing-zip" class="field buy__inputgroup__input--text"  />
+                    <input id="billing-zip" class="field buy__inputgroup__input--text"  />
                   </label>
                 </div>
                 <div class="buy__inputgroup">
                   <label class="buy__inputgroup__label">
                     <span class="buy__inputgroup__label__desc">Country</span>
-                    <select name="billing-country" class="buy__select">
+                    <select id="billing-country" class="buy__select">
                       <option value="AF">Afghanistan</option>
                       <option value="AX">Åland Islands</option>
                       <option value="AL">Albania</option>
@@ -645,7 +645,7 @@
               <div class="buy__inputgroup">
                 <label class="buy__inputgroup__label">
                   <span class="buy__inputgroup__label__desc">Have a Code?</span>
-                  <input id="codes" name="code" class="field buy__inputgroup__input--text"  />
+                  <input id="code" name="code" class="field buy__inputgroup__input--text"  />
                 </label>
               </div>
             </fieldset>
