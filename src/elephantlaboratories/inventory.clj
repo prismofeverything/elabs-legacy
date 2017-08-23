@@ -58,22 +58,22 @@
   (map (partial get m) order))
 
 (def funagain-header
-  ["name"
-   "name"
-   "company"
-   "address1"
-   "address2"
-   "city"
-   "state"
-   "zip"
-   "country"
-   "email"
-   "phone"])
+  [:name
+   :name
+   :company
+   :address1
+   :address2
+   :city
+   :state
+   :zip
+   :country
+   :email
+   :phone])
 
 (defn maps->rows
-  ([maps] (maps->rows maps funagain-header))
+  ([maps] (maps->rows maps (keys (first maps))))
   ([maps order]
-   (let [header order ;; (map name order)
+   (let [header (map name order)
          lines (map (partial extract order) maps)]
      (cons header lines))))
 
@@ -90,7 +90,7 @@
   (let [charges (db/find-all db :charges)
         latest (drop from charges)
         flat (map flatten-charge latest)
-        csv (maps->csv flat)]
+        csv (maps->csv flat funagain-header)]
     (spit to csv)))
 
 (defn mark-shipped
