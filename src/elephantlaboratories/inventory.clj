@@ -71,9 +71,9 @@
    "phone"])
 
 (defn maps->rows
-  ([maps] (maps->rows maps (keys (first maps))))
+  ([maps] (maps->rows maps funagain-header))
   ([maps order]
-   (let [header funagain-header ;; (map name order)
+   (let [header order ;; (map name order)
          lines (map (partial extract order) maps)]
      (cons header lines))))
 
@@ -84,6 +84,14 @@
          writer (java.io.StringWriter.)
          csv (csv/write-csv writer data)]
      (.toString writer))))
+
+(defn emit-orders
+  [db from to]
+  (let [charges (db/find-all db :charges)
+        latest (drop from charges)
+        flat (map flatten-charge latest)
+        csv (maps->csv flat)]
+    (spit to csv)))
 
 (defn mark-shipped
   [db]
