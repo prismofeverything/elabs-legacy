@@ -29,15 +29,15 @@
        (fn [key params]
          (polaris/reverse-route routes key params))))))
 
-(defn chronicle
-  [])
+;; (defn chronicle
+;;   [])
 
 (defn base-routes
   [config]
   [["/" :home (page/page "index" {:title "Elephant Laboratories"})]
    (sol/sol-routes config)
    sol-previous/sol-routes
-   ["/chronicle" :chronicle chronicle]
+   ;; ["/chronicle" :chronicle chronicle]
    think/think-routes])
 
 (defn app
