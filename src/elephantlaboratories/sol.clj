@@ -96,7 +96,7 @@
               "Thank you for your order of Sol: Last Days of a Star!\n"
               "Your total with the game and shipping together comes to "
               total-cost " USD.\n"
-              "Shipping for retail pre-orders begins in August, 2017.\n"
+              "We process orders weekly, so you should receive tracking information from our shipping partner within 6 business days.\n"
               "We will ship it to this address:\n\n"
               (:address1 shipping) "\n"
               (if-not (empty? (:address2 shipping))
