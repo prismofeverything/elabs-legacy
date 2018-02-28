@@ -70,7 +70,7 @@
   (let [charges (mongo/find-all db "charges")
         flat (map inventory/flatten-charge charges)
         recent (drop last-order flat)
-        csv (inventory/maps->csv recent inventory/funagain-header)
+        csv (inventory/maps->csv recent (map keyword inventory/funagain-header))
         {:keys [year month day]} (sample-now)
         path (format "sol-orders-%04d-%02d-%02d.csv" year month day)]
     (spit path csv)
