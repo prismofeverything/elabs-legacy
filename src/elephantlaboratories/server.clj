@@ -58,6 +58,24 @@
       (app (base-routes {:mongo mongo}))
       {:port (or (:port config) 21112)}))))
 
+(defn sample-now
+  []
+  (let [now (java.util.Date.)]
+    {:year (+ 1900 (.getYear now))
+     :month (inc (.getMonth now))
+     :day (.getDate now)}))
+
+(defn emit-orders
+  [db last-order]
+  (let [charges (mongo/find-all db "charges")
+        flat (map inventory/flatten-charge charges)
+        recent (drop last-order flat)
+        csv (inventory/maps->csv recent inventory/funagain-header)
+        {:keys [year month day]} (sample-now)
+        path (format "sol-orders-%04d-%02d-%02d.csv" year month day)]
+    (spit path)
+    (count charges)))
+
 (defn -main
   [& args]
   (println "^^^ elephant laboratories up ^^^")
