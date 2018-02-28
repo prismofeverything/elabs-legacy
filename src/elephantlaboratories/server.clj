@@ -73,7 +73,7 @@
         csv (inventory/maps->csv recent inventory/funagain-header)
         {:keys [year month day]} (sample-now)
         path (format "sol-orders-%04d-%02d-%02d.csv" year month day)]
-    (spit path)
+    (spit path csv)
     (count charges)))
 
 (defn -main
