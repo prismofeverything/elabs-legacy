@@ -96,7 +96,7 @@
               "Thank you for your order of Sol: Last Days of a Star!\n"
               "Your total with the game and shipping together comes to "
               total-cost " USD.\n"
-              "We process orders weekly, so you should receive tracking information from our shipping partner within 6 business days.\n"
+              "We process orders weekly. If you live in the USA, you can expect delivery within 2-3 weeks of placing your order. If you live in CA, the EU or RoW you can expect tracking information within 7-10 days of placing your order.\n"
               "We will ship it to this address:\n\n"
               (:address1 shipping) "\n"
               (if-not (empty? (:address2 shipping))
