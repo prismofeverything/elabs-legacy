@@ -18,7 +18,8 @@
    [elephantlaboratories.sol :as sol]
    [elephantlaboratories.sol-previous :as sol-previous]
    [elephantlaboratories.inventory :as inventory]
-   [elephantlaboratories.think :as think]))
+   [elephantlaboratories.think :as think]
+   [elephantlaboratories.deck :as deck]))
 
 (defn wrap-route-for
   [handler routes]
@@ -38,7 +39,8 @@
    (sol/sol-routes config)
    sol-previous/sol-routes
    ;; ["/chronicle" :chronicle chronicle]
-   think/think-routes])
+   think/think-routes
+   (deck/all-game-routes ["chronovore"])])
 
 (defn app
   [routes]

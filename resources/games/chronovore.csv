@@ -1,0 +1,109 @@
+id,name,deck,energy,element
+1,Dual Cores,Technology,4,n
+2,Construction Efficiency,Technology,2,b
+3,Chaos Construction,Technology,4,b
+4,Accelerated Harvester,Technology,2,b
+5,Junk Efficiency,Technology,3,p
+6,Lead Refinery,Technology,4,b
+7,Polonium Mill,Technology,4,t
+8,Radon Mill,Technology,4,t
+9,Radium Mill,Technology,4,t
+10,Degeneration Harvester,Technology,3,b
+11,Degeneration Engine,Technology,3,b
+12,Greed Conspiracy,Technology,5,t
+13,Specialized Cusp,Technology,4,p
+14,Thallium Wonders,Technology,5,l
+15,Explosive Anomaly,Technology,2,l
+16,Leibowitz Cycle,Technology,3,n
+17,Farcaster Network,Technology,5,t
+18,Knife of Nash,Technology,5,p
+19,Time of Turbulance,Technology,4,p
+20,Excess Joules,Technology,3,n
+21,Void Builder,Technology,3,b
+22,Ohm Siphon,Technology,3,b
+23,Destructive Insight,Technology,6,r
+24,Accelerated Sequence,Technology,5,p
+25,Preservative Sequence,Technology,6,n
+26,Possibility Emblem,Technology,3,b
+27,Loop Engine,Technology,5,n
+28,Hypothesis Eliminator,Technology,3,n
+29,Double Tap,Technology,6,t
+30,Thought Filtration,Technology,4,r
+31,Vice of Truth,Technology,2,p
+32,Seldin's Plan,Technology,3,n
+33,Thorium Reactor,Event,4,l
+34,Lead Reactor,Event,2,r
+35,Thallium Reactor,Event,2,t
+36,Prism Reactor,Event,5,l
+37,Thallium Generator,Event,4,b
+38,Lead Generator,Event,2,l
+39,Thorium Generator,Event,6,l
+40,Chell's Ladder,Event,4,r
+41,Adrenaline Reactor,Event,4,p
+42,Despair Reactor,Event,3,p
+43,Techology Salvager,Event,3,p
+44,Event Salvager,Event,3,p
+45,Portal Salvager,Event,3,p
+46,Rise of Alexandria,Event,4,n
+47,Bridge Collapse,Event,3,n
+48,Chaos Analog,Event,3,r
+49,Energy Salvager,Event,2,p
+50,Chaos Guide,Event,5,t
+51,Overtime Reaping,Event,6,t
+52,Reverse Series,Event,2,p
+53,Spectral Chaos,Event,3,p
+54,Wormhole Seeker,Event,3,b
+55,Lead Lord,Event,4,n
+56,Pollonium Prince,Event,4,n
+57,Radium Raj,Event,4,n
+58,Innovative Clarity,Event,2,b
+59,Door Shifter,Event,4,p
+60,Death Equilibrium,Event,4,n
+61,Stare into the Abyss,Event,2,r
+62,Hope Donation,Event,4,l
+63,Chaos Donation,Event,4,l
+64,Verdant Donation,Event,3,l
+65,Overexploitation,Event,2,l
+66,Neon Leap,Event,4,p
+67,Lost Knowledge,Event,5,t
+68,Superior Infrastructure,Portal,5,p
+69,Superior Alacrity,Portal,5,l
+70,Prism Key,Portal,4,r
+71,Apocalypse Key,Portal,5,p
+72,Junk Key,Portal,5,p
+73,All-purpose Ingestor,Portal,4,b
+74,Unlocked Potential,Portal,5,l
+75,Gathered Potential,Portal,4,n
+76,Parasite Pact,Portal,6,t
+77,Unlocked Secrets,Portal,3,r
+78,Salvager Key,Portal,5,t
+79,Greed Key,Portal,5,l
+80,Polonium Key,Portal,6,t
+81,Greed Sink,Portal,5,l
+82,Rainbow Drive,Portal,5,t
+83,Diversity Key,Portal,4,b
+84,Apocalypse Seeker,Portal,6,n
+85,Infinite Clover Field,Portal,5,b
+86,Chaos Key,Portal,7,p
+87,Doom Key,Portal,6,r
+88,Faraday Key,Portal,5,l
+89,Goldbach Elimination,Portal,5,n
+90,Death Key,Portal,7,p
+91,Stalker Key,Portal,7,l
+92,Difference Pact,Portal,3,l
+93,Hermitage Pact,Portal,5,r
+94,Infrastructure Loop,Portal,4,b
+95,Cataclysmic Chasm,Portal,3,l
+96,The Abyss,Portal,1,p
+97,Enduring Industries,Portal,3,b
+98,Yocto Scale Revolution,Portal,1,l
+99,Loop Hypothesis,Portal,4,p
+100,Monster's Shadow,Portal,4,p
+101,Nuclear Depletion,Chrono,,
+102,Temporal Seclusion,Chrono,,
+103,Time of Destruction,Chrono,,
+104,Determinism's Grasp,Chrono,,
+105,Dimensional Dominance,Chrono,,
+106,Scramble Futures,Chrono,,
+107,Threads of Possibility,Chrono,,
+108,Broken Destiny,Chrono,,

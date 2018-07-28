@@ -1,5 +1,6 @@
 (ns elephantlaboratories.inventory
   (:require
+   [clojure.string :as string]
    [clojure.data.csv :as csv]
    [elephantlaboratories.mongo :as db]))
 
@@ -88,3 +89,26 @@
 (defn mark-shipped
   [db]
   (db/update db :charges {} {:$set {:shipped true}}))
+
+(defn parse-value
+  [raw]
+  (try
+    (let [trim (string/trim raw)
+          expense? (or (= (first trim) \() (and (= (first trim) \") (= (second trim) \()))
+          clean (string/replace trim #"[()$, \"]" "")
+          decimal (Double/parseDouble clean)]
+      (if expense?
+        (* -1 decimal)
+        decimal))
+    (catch Exception e
+      (println "failed on" raw)
+      0)))
+
+(defn read-expenses
+  [path column]
+  (let [file (slurp path)
+        lines (string/split file #"\n")
+        parts (map #(string/split % #",") (rest lines))
+        values (map #(nth % column) parts)
+        decimals (map parse-value values)]
+    (reduce + 0 decimals)))
