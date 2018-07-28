@@ -104,7 +104,7 @@
 (defn all-game-routes
   [game-keys]
   (let [all-games (load-games (map name game-keys))]
-    ["/games" :games (deck-handler (fn [request] (keys all-games)))
+    ["/remote" :games (deck-handler (fn [request] (keys all-games)))
      [["/:game/decks" :decks
        (deck-handler
         (fn [request]
