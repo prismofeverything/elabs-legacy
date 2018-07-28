@@ -51,6 +51,15 @@
    :dealt {}
    :discards {}})
 
+(defn deck-counts
+  [deck]
+  (into
+   {}
+   (map
+    (fn [[key cards]]
+      [key (count cards)])
+    deck)))
+
 (defn partition-decks
   ([cards] (partition-decks cards :deck))
   ([cards deck-key]
@@ -131,14 +140,18 @@
             (fn [request]
               (let [{:keys [game deck]} (get request :params)
                     decks-store (get all-games game)
-                    {:keys [drawn decks]} (draw-from-deck @decks-store deck)]
-                (reset! decks-store decks)
-                drawn)))]
+                    {:keys [drawn decks]} (draw-from-deck @decks-store deck)
+                    _ (reset! decks-store decks)
+                    counts (deck-counts (get @decks-store deck))]
+                {:drawn drawn
+                 :counts counts})))]
 
           ["/discard/:id" :discard
            (deck-handler
             (fn [request]
               (let [{:keys [game deck id]} (get request :params)
-                    decks-store (get all-games game)]
-                (swap! decks-store discard-from-deck deck id)
-                (get-in @decks-store [deck :discards id]))))]]]]]]]))
+                    decks-store (get all-games game)
+                    _ (swap! decks-store discard-from-deck deck id)
+                    counts (deck-counts (get @decks-store deck))]
+                {:discard (get-in @decks-store [deck :discards id])
+                 :counts counts})))]]]]]]]))
