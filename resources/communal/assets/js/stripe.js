@@ -322,8 +322,8 @@ function elephantLaboratories() {
             }
           });
         } else if (result.error) {
-          $('.error').text(result.error.message);
-          $('.error').show();
+          $('#error-message').text(result.error.message);
+          $('#error').show();
         }
       }
     }
