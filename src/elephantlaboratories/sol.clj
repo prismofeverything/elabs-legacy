@@ -27,7 +27,7 @@
    {:secret (System/getenv "STRIPE_LIVE_SECRET")
     :public (System/getenv "STRIPE_LIVE_PUBLIC")}})
 
-(def STRIPE_ENV :live)
+(def STRIPE_ENV :test)
 
 (defn charge!
   [secret token amount]
@@ -181,9 +181,7 @@
     ["/buy" :sol-buy (page/page "sol-buy" {:title "Buy"})]
     ["/game" :sol-game (fn [request] {:status 302 :headers {"Location" "/sol"} :body ""})]
     ["/thanks" :sol-thanks (page/page "sol-thanks" {:title "Thank You"})]
-    ["/confirm" :sol-confirm (page/page "sol-confirm" {:title "Thanks!"})]
-    ["/charge" :sol-charge {:POST (fn [request]
-                                    (#'charge-handler (:mongo config) request))}]]])
+    ["/confirm" :sol-confirm (page/page "sol-confirm" {:title "Thanks!"})]]])
 
 (defn minimum-level
   [printing freight shipping pledge]

@@ -37,9 +37,9 @@
   [config]
   [["/" :home (page/page "index" {:title "Elephant Laboratories"})]
    (sol/sol-routes config)
-   sol-previous/sol-routes
+   ;; sol-previous/sol-routes
    ;; ["/chronicle" :chronicle chronicle]
-   think/think-routes
+   ;; think/think-routes
    (deck/all-game-routes ["chronovore"])])
 
 (defn app
