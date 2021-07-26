@@ -2,35 +2,137 @@
 {{%content}}
 <header class="container container--pageheader container--pageheader--order">
   <div class="constrainer">
-	<h1 class="h1">Sold Out</h1>		
+	<h1 class="h1">SOL reprint</h1>
 	<!-- <h1 class="h1">{{title}}</h1>		 -->
   </div>
 </header>
 
+<!-- <main class="main-content"> -->
+<!--   <div class="container container--light"> -->
+<!--     <p>Thanks for visiting! We are currently planning the best way to get SOL back in print! </p> -->
+<!--     <p>If you want to receive updates about our progress, please sign up for the mailing list below.</p> -->
+<!--     <p>We are currently deciding between a straight reprint, or as part of a campaign for our new game, ORGANISM.</p> -->
+<!--     <p>Your feedback would be helpful!</p> -->
+<!--     <\!-- <p><a href="https://boardgamegeek.com/article/31723739#31723739" target="_blank">Here are more details about our plans for the future, with discussion.</a></p> -\-> -->
+<!--   </div> -->
+  
+<!--   <div class="container container--reverse"> -->
+<!--     <div class="constrainer"> -->
+<!--       <div class="half-and-half"> -->
+<!--         <div class="half-and-half__item">                        -->
+<!--           <img src="/assets/images/box_hero_orderpage_@2x.png" alt="Product Shot: Sol" class="image--featured" width="400" height="240"> -->
+<!--         </div> -->
+<!--         <div class="half-and-half__item"> -->
+<!--           <div class="sol-rule sol-rule--white"> -->
+<!--             <h2 class="h2">Questions?</h2> -->
+<!--             <p>We sincerely thank you for your interest in Sol! If you have any questions, please write us at <a href="mailto:mothership@elephantlaboratories.com?subject=Sol%20Website%20Inquiry">mothership@elephantlaboratories.com</a></p> -->
+<!--             <p>We hope to hear about your experience with Sol on the <a href="https://boardgamegeek.com/boardgame/174837/sol-last-days-star" rel="external">BGG forums</a>.</p>                  -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </main> -->
+
+
+
+
+
+
+
+
 <main class="main-content">
   <div class="container container--light">
-    <p>Thanks for visiting! SOL is currently out of print. </p>
-    <p>Your support and enthusiasm for the game has been overwhelming, and we thank you.</p>
-    <p>We do intend to reprint in the future, but there is no set date. </p>
-    <p>Elephant Laboratories is currently developing a new game we plan to Kickstart in 2020. </p>
-    <p><a href="https://boardgamegeek.com/article/31723739#31723739" target="_blank">Here are more details about our plans for the future, with discussion.</a></p>
-  </div>
-  
-  <div class="container container--reverse">
-    <div class="constrainer">
-      <div class="half-and-half">
-        <div class="half-and-half__item">                       
-          <img src="/assets/images/box_hero_orderpage_@2x.png" alt="Product Shot: Sol" class="image--featured" width="400" height="240">
-        </div>
-        <div class="half-and-half__item">
-          <div class="sol-rule sol-rule--white">
-            <h2 class="h2">Questions?</h2>
-            <p>We sincerely thank you for your interest in Sol! If you have any questions, please write us at <a href="mailto:mothership@elephantlaboratories.com?subject=Sol%20Website%20Inquiry">mothership@elephantlaboratories.com</a></p>
-            <p>We hope to hear about your experience with Sol on the <a href="https://boardgamegeek.com/boardgame/174837/sol-last-days-star" rel="external">BGG forums</a>.</p>                 
+    <!-- FORM -->
+    <form id="buy-sol" class="buy">
+      <div class="constrainer">
+        <div class="measure">
+          <h2 class="h2">Want to be on the mothership?</h2>
+          <p>Thanks for visiting! We are currently planning the best way to get SOL back in print,
+          <br />as well as preparing a KS campaign for our new game, ORGANISM. </p>
+          <p>If you want to receive updates about our progress, please sign up for the mailing list below.</p>
+          <p style="color: #a19364">(We will only use your information to send you occasional updates on our games. <br/> You can opt out at any time. We will never sell or share your information.)</p>
+          <p>Questions? You can contact us directly at <a href="mailto:mothership@elephantlaboratories.com">mothership@elephantlaboratories.com</a></p>
+          <div class="half-and-half half-and-half--buy">
+            <fieldset id="shipping-address" class="half-and-half__item buy__fieldset">
+              <legend class="h3">Sign up for updates!</legend>
+              <div class="buy__inputgroup">
+                <label class="buy__inputgroup__label">
+                  <span class="buy__inputgroup__label__desc">Name</span>
+                  <input id="name" name="name" class="field buy__inputgroup__input--text"  />
+                </label>
+              </div>
+              <div class="buy__inputgroup">
+                <label class="buy__inputgroup__label">
+                  <span class="buy__inputgroup__label__desc">Email</span>
+                  <input id="email" name="email" class="field buy__inputgroup__input--text"  />
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <p>
+            We would love your input as we decide how to proceed with these two games:
+          </p>
+
+          <!-- <p>We are deciding between a standalone reprint, or as part of a campaign for our new game, ORGANISM.</p> -->
+          <!-- <p>Your feedback would be helpful! Thank you for all your support.</p> -->
+
+          <div class="half-and-half half-and-half--buy">
+            <fieldset id="feedback" class="half-and-half__item buy__fieldset">
+              <legend class="h3">Feedback</legend>
+              <div class="buy__inputgroup">
+                <label class="buy__inputgroup__label">
+                  <input type="checkbox" id="campaign" name="campaign" class="field buy__inputgroup__input--checkbox"  />
+                  <span class="buy__inputgroup__label__check">Interested in both games as a KS campaign</span>
+                </label>
+              </div>
+              <div class="buy__inputgroup">
+                <label class="buy__inputgroup__label">
+                  <input type="checkbox" id="reprint" name="reprint" class="field buy__inputgroup__input--checkbox"  />
+                  <!-- <span class="buy__inputgroup__label__check">Only here for Sol - reprint would be my choice</span> -->
+                  <span class="buy__inputgroup__label__check">Only here for Sol - I prefer the reprint</span>
+                </label>
+              </div>
+              <div class="buy__inputgroup">
+                <label class="buy__inputgroup__label">
+                  <input type="checkbox" id="organism" name="organism" class="field buy__inputgroup__input--checkbox"  />
+                  <span class="buy__inputgroup__label__check">Only here for ORGANISM</span>
+                </label>
+              </div>
+              <div class="buy__inputgroup">
+                <label class="buy__inputgroup__label">
+                  <span class="buy__inputgroup__label__desc">Any other comments?</span>
+                  <textarea id="comments" name="comments" class="field buy__inputgroup__input--textarea"></textarea>
+                </label>
+              </div>
+              <button type="submit" class="button button--left">Sign up!</button>  
+            </fieldset>
           </div>
         </div>
       </div>
+    </form>
+    <!-- /FORM -->      
+    <!-- OUTCOME -->
+    <div class="outcome">
+      <div class="constrainer">
+        <div id="error" class="button--right">
+          <h2 class="h2 error">Hmmm.</h2>
+          <span id="error-message" class="buy__inputgroup__label__desc error">I’m sorry, that didn’t work out. Have you filled out all the fields above?</nobr></span>
+        </div>
+        <div id="success">
+          <h2 class="h2">Thank You</h2>
+          <span id="thank-you">
+            <p>Thank you for your purchase, <span id="thank-you-name">friend</span>! We will be sending you an email confirmation about your order. <br /><br />
+              Please feel free to contact us at <a href="mailto:mothership@elephantlaboratories.com?subject=Sol%20Website%20Inquiry">mothership@elephantlaboratories.com</a> with <nobr>any questions.</nobr></p>
+          </span>
+        </div>
+      </div>
     </div>
+    <!-- /OUTCOME -->
   </div>
-</main>
+
+              </field>
+
+
+
 {{/content}}

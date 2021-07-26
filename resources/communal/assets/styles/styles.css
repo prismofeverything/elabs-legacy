@@ -1478,6 +1478,14 @@ legend.h3 {
   color: #a19364;
   margin-bottom: .25rem; }
 
+.buy__inputgroup__label__check {
+  /* display: block; */
+  text-transform: uppercase;
+  font-size: .75em;
+  font-weight: 700;
+  color: #a19364;
+  margin-bottom: .25rem; }
+
 @media (min-width: 30em) {
   .buy__select {
     font-family: "Gotham SSm A", "Gotham SSm B", Arial, sans-serif;
@@ -1498,6 +1506,43 @@ legend.h3 {
   .buy__inputgroup__input--text::-moz-placeholder {
     color: #D2CCB5; }
   .buy__inputgroup__input--text:-ms-input-placeholder {
+    color: #D2CCB5; }
+
+.buy__inputgroup__input--textarea {
+  box-sizing: border-box;
+  rows: 3;
+  width: 100%;
+  border: none;
+  font-size: .875rem;
+  padding: .5rem;
+  margin-bottom: 10px;
+  background: #a19364;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: "Gotham SSm A", "Gotham SSm B", Arial, sans-serif; }
+  .buy__inputgroup__input--text::-webkit-input-placeholder {
+    color: #D2CCB5; }
+  .buy__inputgroup__input--text::-moz-placeholder {
+    color: #D2CCB5; }
+  .buy__inputgroup__input--text:-ms-input-placeholder {
+    color: #D2CCB5; }
+
+.buy__inputgroup__input--checkbox {
+  box-sizing: border-box;
+  /* width: 100%; */
+  margin-right: 10px;
+  border: none;
+  font-size: .875rem;
+  padding: .5rem;
+  background: #a19364;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: "Gotham SSm A", "Gotham SSm B", Arial, sans-serif; }
+  .buy__inputgroup__input--checkbox::-webkit-input-placeholder {
+    color: #D2CCB5; }
+  .buy__inputgroup__input--checkbox::-moz-placeholder {
+    color: #D2CCB5; }
+  .buy__inputgroup__input--checkbox:-ms-input-placeholder {
     color: #D2CCB5; }
 
 .buy__cost-summary-table {

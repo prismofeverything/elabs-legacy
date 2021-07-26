@@ -9,7 +9,7 @@
                  [clj-http "3.5.0"]
                  [cheshire "5.7.1"]
                  [polaris "0.0.17"]
-                 [aleph "0.4.3"]
+                 [aleph "0.4.6"]
                  [com.taoensso/timbre "4.10.0"]
                  [ring "1.6.0-RC3"]
                  [org.clojure/data.csv "0.1.4"]
